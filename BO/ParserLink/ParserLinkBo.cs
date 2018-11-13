@@ -78,7 +78,7 @@ namespace BO.ParserLink
         {
             MetaModel metaTag = new MetaModel()
             {
-                TitlePage = Const.MetaProductTitle,
+                TitlePage = "Sản phẩm",
                 MetaTitle = Const.MetaProductTitle,
                 MetaDescription = Const.MetaProductDescription,
                 MetaKeyword = Const.MetaProductKeyword

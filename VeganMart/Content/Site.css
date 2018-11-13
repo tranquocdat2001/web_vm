@@ -1233,7 +1233,7 @@ fieldset {
     font-weight: 600;
 }
 
-    .menu_hori li a:hover {
+    .menu_hori li a:hover, .menu_hori li a:focus {
         background: transparent;
     }
 
@@ -1435,7 +1435,7 @@ span.small-text {
 }
 
     .sidebar_blogs .sidebar_title {
-        background: #0f9ed8 !important;
+        background: #1a7d3e;
         color: #fff;
         padding: 15px;
         font-size: 16px;

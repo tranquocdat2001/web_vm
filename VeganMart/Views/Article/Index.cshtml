@@ -12,17 +12,20 @@
         @if (Model != null)
         {
             <div class="news-content">
-                <h1 class="page_heading ">
-                    @Model.TitlePage
-                </h1>
-                <div class="sortPagibar m-b-15 clearfix">
-                    <div class="pull-left">
+                <div class="page-heading">
+                    <h1>
+                        @Model.TitlePage
+                    </h1>
+                    <div class="sortPagibar m-b-15 clearfix">
+                        <div class="pull-left">
 
-                        <div class="total_search">
-                            <span>@Model.PagingInfo.Count.ToString("#,###")</span> kết quả được tìm thấy
+                            <div class="total_search">
+                                <span>@Model.PagingInfo.Count.ToString("#,###")</span> kết quả được tìm thấy
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 @if (Model.ArticleList != null && Model.ArticleList.Count > 0)
                 {
                     <div class="blog_wrap">
@@ -42,7 +45,7 @@
                                         Ngày: @item.PublishedDate
                                     </p>
                                     <div class="blog-content-short-description">
-                                        <p>@item.Description</p>
+                                        <p>@item.GetDescription(270)</p>
                                     </div>
                                 </div>
                             </article>
@@ -57,7 +60,7 @@
 
     <div class="col-md-3">
         @Html.Partial("~/Views/Article/_ArticleMenu.cshtml")
-        @Html.Action("ArticleTop", "Article", new { cateId = 1, top = 5 })
+        @Html.Action("ArticleTop", "Article", new { cateId = 0, top = 5 })
     </div>
 
 </div>

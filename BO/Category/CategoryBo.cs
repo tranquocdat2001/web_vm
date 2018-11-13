@@ -109,7 +109,8 @@ namespace BO.Category
                     BreadcrumbModel breadcrumb = new BreadcrumbModel()
                     {
                         Name = objCate.Name,
-                        Url = indexBreadcrumb == 1 ? string.Empty : "/",
+                        //Url = indexBreadcrumb == 1 ? string.Empty : "/",
+                        Url = string.Format("/{0}", objCate.DisplayUrl),
                         Priority = indexBreadcrumb
                     };
 

@@ -21,7 +21,7 @@ namespace VeganMart.Controllers
                     pageNum++;
                 }
                 pagingInfo.LinkSite = string.IsNullOrWhiteSpace(pagingInfo.LinkSite) == false ? (pagingInfo.LinkSite.TrimEnd('/') + "/") : "";
-                const string buildLink = "<li {2}><a href='{0}{1}' {2}>{3}</a> </li>";
+                const string buildLink = "<li><a href='{0}{1}' {2}>{3}</a> </li>";
                 const string active = " class=\"active\" ";
                 const string first_page = "class='first-page'";
                 const string prev_page = "class='prev-page'";

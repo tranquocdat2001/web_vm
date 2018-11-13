@@ -105,6 +105,7 @@
     <Content Include="Content\images\icon_slide.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo_85.png" />
+    <Content Include="Content\images\noimage.jpg" />
     <Content Include="Content\images\sp-loading.gif" />
     <Content Include="Content\images\user.png" />
     <Content Include="Content\images\user_mobile.png" />
@@ -142,6 +143,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\fonts-master\roboto-bolditalic.ttf" />
+    <Content Include="Content\fonts\fonts-master\roboto-italic.ttf" />
+    <Content Include="Content\fonts\fonts-master\roboto-thin.ttf" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />

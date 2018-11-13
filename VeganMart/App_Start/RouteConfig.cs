@@ -130,13 +130,20 @@ namespace VeganMart
 
             routes.MapRoute(
               name: "ArticleDetail",
-              url: "{alias}/{title}-ar{articleId}",
+              url: "tin-tuc/{title}-ar{articleId}",
               defaults: new { controller = "Article", action = "ArticleDetail" },
               constraints: new { articleId = @"\d+" }
             );
 
             routes.MapRoute(
-              name: "Article",
+              name: "ArticleListPaing",
+              url: "tin-tuc/p{pageIndex}",
+              defaults: new { controller = "Article", action = "Index" },
+              constraints: new { pageIndex = @"\d+" }
+            );
+
+            routes.MapRoute(
+              name: "ArticleList",
               url: "tin-tuc",
               defaults: new { controller = "Article", action = "Index" }
             );

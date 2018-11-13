@@ -91,16 +91,16 @@
 
     <div class="col-md-3">
 
-        <div class="menu-product menu-product-group">
+        @*<div class="menu-product menu-product-group">
             <h3>
                 <span>
                     T&#244;m
                 </span>
             </h3>
             <ul class='level0'></ul>
-        </div>
+        </div>*@
 
-        @Html.Partial("~/Views/Category/_MenuRight.cshtml")
+        @Html.Action("MenuRight", "Category")
 
         @Html.Action("ProductHot", "Product", new { cateId = 1, top = 5 })
     </div>

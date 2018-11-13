@@ -92,6 +92,7 @@
     <Content Include="demo\slider_2.jpg" />
     <Content Include="demo\tom.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="images\noimage.jpg" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
@@ -115,7 +116,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="images\" />
     <Folder Include="Photo\" />
     <Folder Include="Private\" />
     <Folder Include="Public\" />

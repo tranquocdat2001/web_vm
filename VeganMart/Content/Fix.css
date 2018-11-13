@@ -81,6 +81,7 @@
 .page {
     /*float: right;*/
     text-align: center;
+    margin-top: 20px;
 }
 
 .paging {
@@ -119,7 +120,8 @@
 
     .paging [class*="-page"]:before {
         display: inline-block;
-        font-family: "fontello";
+        /*font-family: "fontello";*/
+        font-family: 'FontAwesome' !important;
         font-style: normal;
         font-variant: normal;
         font-weight: normal;

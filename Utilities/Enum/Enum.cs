@@ -83,7 +83,7 @@ namespace Utilities
         public enum ArticleStatus
         {
             Hidden = 0,
-            Active = 1,
+            Active = 5,
             Deleted = 2
         }
 

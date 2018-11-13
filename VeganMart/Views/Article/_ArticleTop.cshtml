@@ -22,15 +22,15 @@
                             <h4><a href="@item.URL" title="@item.Title">@item.Title</a></h4>
                         </div>
                         <div class="article_meta">
-                            <div class="article_comment">
+                            @*<div class="article_comment">
                                 <i class="fa fa-comments-o" aria-hidden="true"></i> 0 bình luận
-                            </div>
+                            </div>*@
                             <div class="article_created">
                                 <i class="fa fa-calendar" aria-hidden="true"></i> <time datetime="@item.PublishedDate">@item.PublishedDate</time>
                             </div>
                         </div>
                         <div class="des">
-                            <p>@item.Description</p>
+                            <p>@item.GetDescription(100)</p>
                         </div>
                         <a class="readmore" href="@item.URL">Đọc tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                     </div>

@@ -6,7 +6,7 @@ namespace PublicModel
 {
     public class ArticleModel
     {
-        public ArticleModel(ArticleEntity item, CategoryEntity category)
+        public ArticleModel(ArticleEntity item)
         {
             this.ArticleId = item.NewsID;
             this.CateId = item.CategoryID;
@@ -16,7 +16,7 @@ namespace PublicModel
             this.Avatar = item.Avatar;
             this.CreatedDate = item.CreatedDate.ToString("dd/MM/yyyy");
             this.PublishedDate = item.PublishedDate.ToString("dd/MM/yyyy");
-            this.URL = BuildLink.BuildURLForArticle(category.DisplayUrl, item.Title, item.NewsID);
+            this.URL = BuildLink.BuildURLForArticle(item.Title, item.NewsID);
         }
         public int ArticleId { get; set; }
         public int CateId { get; set; }
@@ -30,6 +30,10 @@ namespace PublicModel
         public string GetAvatar(string crop)
         {
             return BuildLink.CropImage(this.Avatar, crop);
+        }
+        public string GetDescription(int intLength)
+        {
+            return StringUtils.TrimText(this.Description, intLength);
         }
 
     }
@@ -60,7 +64,7 @@ namespace PublicModel
         {
 
         }
-        public ArticleModelDetail(ArticleEntity item, CategoryEntity category)
+        public ArticleModelDetail(ArticleEntity item)
         {
             this.ArticleId = item.NewsID;
             this.CateId = item.CategoryID;
@@ -71,7 +75,8 @@ namespace PublicModel
             this.Avatar = item.Avatar;
             this.CreatedDate = item.CreatedDate.ToString("dd/MM/yyyy");
             this.PublishedDate = item.PublishedDate.ToString("dd/MM/yyyy");
-            this.URL = BuildLink.BuildURLForArticle(category.DisplayUrl, item.Title, item.NewsID);
+            this.Status = item.Status;
+            this.URL = BuildLink.BuildURLForArticle(item.Title, item.NewsID);
         }
 
         public int ArticleId { get; set; }

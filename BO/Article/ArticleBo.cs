@@ -55,12 +55,13 @@ namespace BO.Article
                 CategoryEntity category = new CategoryEntity();
                 foreach (ArticleEntity item in lstArticle)
                 {
-                    category = _categoryBo.GetByCateId(item.CategoryID);
-                    if (category != null && category.CatalogID > 0)
-                    {
-                        ArticleModel articleModel = new ArticleModel(item, category);
-                        lstModel.Add(articleModel);
-                    }
+                    //category = _categoryBo.GetByCateId(item.CategoryID);
+                    //if (category != null && category.CatalogID > 0)
+                    //{
+                    //}
+
+                    ArticleModel articleModel = new ArticleModel(item);
+                    lstModel.Add(articleModel);
                 }
             }
             return lstModel;
@@ -94,12 +95,14 @@ namespace BO.Article
                 CategoryEntity category = new CategoryEntity();
                 foreach (ArticleEntity item in lstArticle)
                 {
-                    category = _categoryBo.GetByCateId(item.CategoryID);
-                    if (category != null && category.CatalogID > 0)
-                    {
-                        ArticleModel articleModel = new ArticleModel(item, category);
-                        lstModel.Add(articleModel);
-                    }
+                    //category = _categoryBo.GetByCateId(item.CategoryID);
+                    //if (category != null && category.CatalogID > 0)
+                    //{
+                    //    ArticleModel articleModel = new ArticleModel(item);
+                    //    lstModel.Add(articleModel);
+                    //}
+                    ArticleModel articleModel = new ArticleModel(item);
+                    lstModel.Add(articleModel);
                 }
             }
             return lstModel;
@@ -144,11 +147,12 @@ namespace BO.Article
             ArticleEntity objArticle = _articleDal.GetById(articleId);
             if (objArticle != null && objArticle.NewsID > 0)
             {
-                CategoryEntity category = _categoryBo.GetByCateId(objArticle.CategoryID);
-                if (category != null && category.CatalogID > 0)
-                {
-                    objModel = new ArticleModelDetail(objArticle, category);
-                }
+                //CategoryEntity category = _categoryBo.GetByCateId(objArticle.CategoryID);
+                //if (category != null && category.CatalogID > 0)
+                //{
+                //    objModel = new ArticleModelDetail(objArticle);
+                //}
+                objModel = new ArticleModelDetail(objArticle);
             }
             return objModel;
         }

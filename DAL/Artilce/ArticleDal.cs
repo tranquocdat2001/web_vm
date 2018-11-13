@@ -84,7 +84,7 @@ namespace DAL.Artilce
                 using (IDbContext context = Context())
                 {
                     obj = context.StoredProcedure(storeName)
-                        .Parameter("ArticleId", articleId, DataTypes.Int32)
+                        .Parameter("NewsId", articleId, DataTypes.Int32)
                         .QuerySingle<ArticleEntity>();
                 }
             }

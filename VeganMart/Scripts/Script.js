@@ -258,6 +258,10 @@ var product = {
                 product.setHeightItem('.product_list .product-wrapper', 4, '.title');
             }, 300);
         }
+
+        if ($('.menu-product').length > 0) {
+            product.menuProduct();
+        }
     },
 
     switchInterface: function () {
@@ -299,5 +303,20 @@ var product = {
                     $(this).height(maxHeight);
             });
         }
+    },
+    menuProduct: function () {
+        $('.menu-product li.child .open-close').on('click', function () {
+            $(this).removeAttr('href');
+            var element = $(this).parent('li');
+            if (element.hasClass('open')) {
+                element.removeClass('open');
+                element.children('ul').slideUp();
+            }
+            else {
+                element.addClass('open');
+                element.children('ul').slideDown();
+            }
+        });
     }
+
 };

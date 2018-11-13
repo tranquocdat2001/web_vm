@@ -33,6 +33,12 @@ namespace VeganMart.Controllers
             return PartialView("_MenuTop", lstCate);
         }
 
+        public ActionResult MenuRight()
+        {
+            List<CategoryEntity> lstCate = _categoryBo.GetList();
+            return PartialView("_MenuRight", lstCate);
+        }
+
         public ActionResult Breadcrumb(string cateName, int cateId = 0)
         {
             List<BreadcrumbModel> lstBreadcrumb = _categoryBo.GetBreadcrumb(cateName, cateId);

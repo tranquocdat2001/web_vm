@@ -8,20 +8,20 @@
     <div class="col-md-9">
 
         @*<div class="breadcrumb clearfix">
-            <ul>
-                <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
-                    <a title="Đến trang chủ" href="/" itemprop="url"><span itemprop="title">Trang chủ</span></a>
-                </li>
-                <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="category17 icon-li">
-                    <div class="link-site-more">
-                        <a title="" href="/san-pham/tom-33806" itemprop="url">
-                            <span itemprop="title">T&#244;m</span>
-                        </a>
-                    </div>
-                </li>
-                <li class="productname icon-li"><strong>Cồi s&#242; điệp</strong> </li>
-            </ul>
-        </div>*@
+                <ul>
+                    <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
+                        <a title="Đến trang chủ" href="/" itemprop="url"><span itemprop="title">Trang chủ</span></a>
+                    </li>
+                    <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="category17 icon-li">
+                        <div class="link-site-more">
+                            <a title="" href="/san-pham/tom-33806" itemprop="url">
+                                <span itemprop="title">T&#244;m</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="productname icon-li"><strong>Cồi s&#242; điệp</strong> </li>
+                </ul>
+            </div>*@
 
         @Html.Action("Breadcrumb", "Category", new { cateId = Model.CateId })
 
@@ -33,20 +33,20 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12 product-image clearfix">
                             @*<div class="sp-loading">
-                                <img src="~/Content/images/sp-loading.gif" alt=""><br>LOADING IMAGES
-                            </div>*@
+                                    <img src="~/Content/images/sp-loading.gif" alt=""><br>LOADING IMAGES
+                                </div>*@
                             @*<div class="sp-wrap sp-non-touch" style="display: inline-block;">
-                                <div class="sp-large">
-                                    <a href="~/Content/demo/oc.jpg" class="ng-scope .sp-current-big">
-                                        <img src="~/Content/demo/oc.jpg" />
-                                    </a>
-                                </div>
-                            </div>*@
+                                    <div class="sp-large">
+                                        <a href="~/Content/demo/oc.jpg" class="ng-scope .sp-current-big">
+                                            <img src="~/Content/demo/oc.jpg" />
+                                        </a>
+                                    </div>
+                                </div>*@
                             @*<div class="sp-wrap">
-                                <a href="~/Content/demo/oc.jpg">
-                                    <img src="~/Content/demo/oc.jpg" alt="" />
-                                </a>
-                            </div>*@
+                                    <a href="~/Content/demo/oc.jpg">
+                                        <img src="~/Content/demo/oc.jpg" alt="" />
+                                    </a>
+                                </div>*@
                             @Html.Partial("~/Views/Product/_DetailAvatar.cshtml")
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 clearfix">
@@ -55,32 +55,32 @@
                                 <div>
                                     <ins class="m-b-5">@Model.PriceFormat</ins>
                                     @*<div class="product_compare_at_price m-b-3">
-                                        <span>Giá gốc: </span>
-                                        <del>190,000đ</del>
-                                    </div>
-                                    <div class="product_price_sale m-b-3">
-                                        <span>Giảm: </span>
-                                        <span class="price_off">30,000đ</span>
-                                    </div>*@
+                                            <span>Giá gốc: </span>
+                                            <del>190,000đ</del>
+                                        </div>
+                                        <div class="product_price_sale m-b-3">
+                                            <span>Giảm: </span>
+                                            <span class="price_off">30,000đ</span>
+                                        </div>*@
                                 </div>
                             </div>
                             @*<div class="product_price p-b-10">
-                                <ins class="m-b-5">Không có hàng</ins>
-                            </div>*@
+                                    <ins class="m-b-5">Không có hàng</ins>
+                                </div>*@
                             <div class="product-code p-b-10">Mã SP: @Model.Code</div>
                             <div class="des p-b-10">
                                 @Html.Raw(Model.Description)
                             </div>
                             @*<div class="social">
-                                <!-- AddThis Button BEGIN -->
-                                <div class="addthis_toolbox addthis_default_style">
-                                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                                    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-                                    <a class="addthis_counter addthis_pill_style addthis_nonzero"></a>
-                                </div>
-                                <script type="text/javascript" src="/scripts/addthis/addthis_widget.js#pubid=ra-5334d6387b03b532"></script>
-                                <!-- AddThis Button END -->
-                            </div>*@
+                                    <!-- AddThis Button BEGIN -->
+                                    <div class="addthis_toolbox addthis_default_style">
+                                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                        <a class="addthis_counter addthis_pill_style addthis_nonzero"></a>
+                                    </div>
+                                    <script type="text/javascript" src="/scripts/addthis/addthis_widget.js#pubid=ra-5334d6387b03b532"></script>
+                                    <!-- AddThis Button END -->
+                                </div>*@
                             <div id="add-item-form" class="variants clearfix m-b-10 p-b-10">
 
                                 @if (!string.IsNullOrEmpty(Model.Weight))
@@ -94,18 +94,18 @@
                                     </div>
                                 }
                                 @*<div class="clearfix product_quantity m-t-10 m-b-20">
-                                    <label class="label_quantity m-b-5">Số lượng</label>
-                                    <button class="button btn_minus b-r-0" ng-click="DownQuantity()">-</button>
-                                    <input name="quantity" class="quantity text-center" min="1" value="1" type="number">
-                                    <button class="button btn_plus b-l-0" ng-click="UpQuantity()">+</button>
-                                </div>
-                                <div class="button clearfix">
-                                    <div class="col-lg-6 col-sm-6 col-xs-6 col-xxs-12 p-l-0 p-r-xxs-0 m-b-10"><button id="add-to-cart" ng-click="addToCard()"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm giỏ hàng</button></div>
-                                    <div class="col-lg-6 col-sm-6 col-xs-6 col-xxs-12 p-r-0 p-l-xxs-0 m-b-10"><button id="buy-now" ng-click="addToCardBuy()"><i class="glyphicon glyphicon-ok"></i> Mua ngay</button></div>
-                                </div>*@
+                                        <label class="label_quantity m-b-5">Số lượng</label>
+                                        <button class="button btn_minus b-r-0" ng-click="DownQuantity()">-</button>
+                                        <input name="quantity" class="quantity text-center" min="1" value="1" type="number">
+                                        <button class="button btn_plus b-l-0" ng-click="UpQuantity()">+</button>
+                                    </div>
+                                    <div class="button clearfix">
+                                        <div class="col-lg-6 col-sm-6 col-xs-6 col-xxs-12 p-l-0 p-r-xxs-0 m-b-10"><button id="add-to-cart" ng-click="addToCard()"><i class="glyphicon glyphicon-shopping-cart"></i> Thêm giỏ hàng</button></div>
+                                        <div class="col-lg-6 col-sm-6 col-xs-6 col-xxs-12 p-r-0 p-l-xxs-0 m-b-10"><button id="buy-now" ng-click="addToCardBuy()"><i class="glyphicon glyphicon-ok"></i> Mua ngay</button></div>
+                                    </div>*@
                                 @*<div class="button clearfix">
-                                    <button class="btn btn-primary" disabled="disabled"><i class="glyphicon glyphicon-shopping-cart"></i> Hết hàng</button>
-                                </div>*@
+                                        <button class="btn btn-primary" disabled="disabled"><i class="glyphicon glyphicon-shopping-cart"></i> Hết hàng</button>
+                                    </div>*@
                                 <div class="call">
                                     <p class="title">Để lại số điện thoại, chúng tôi sẽ tư vấn ngay sau từ 5 › 10 phút</p>
                                     <div class="input">
@@ -228,7 +228,7 @@
 
     <div class="col-md-3">
 
-        @Html.Partial("~/Views/Category/_MenuRight.cshtml")
+        @Html.Action("MenuRight", "Category")
 
         <div class="box-sale-policy">
             <h3><span>Chính sách bán hàng</span></h3>

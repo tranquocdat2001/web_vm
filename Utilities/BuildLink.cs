@@ -19,12 +19,12 @@ namespace Utilities
 
         public static string BuildLinkImage(string urlImage, string type, string sizeImage = "")
         {
-            if (string.IsNullOrEmpty(urlImage)) return Const.NoImage;
+            if (string.IsNullOrEmpty(urlImage))
+                urlImage = Const.NoImage;
 
             if (urlImage.StartsWith("http"))
                 return urlImage;
 
-            urlImage = "demo/oc.jpg";
             urlImage = urlImage.TrimStart('/');
             if (string.IsNullOrEmpty(sizeImage))
                 return string.Format("{0}/{1}", Const.DomainImage, urlImage);
@@ -58,10 +58,10 @@ namespace Utilities
             title = StringUtils.UnicodeToUnsignCharAndDash(title).Trim('-');
             return BuildURL(ConstUrl.ProductDetailFormatUrl, new object[] { cateUrl, title, productId });
         }
-        public static string BuildURLForArticle(string cateUrl, string title, int articleId)
+        public static string BuildURLForArticle(string title, int articleId)
         {
             title = StringUtils.UnicodeToUnsignCharAndDash(title).Trim('-');
-            return BuildURL(ConstUrl.ArticleDetailFormatUrl, new object[] { cateUrl, title, articleId });
+            return BuildURL(ConstUrl.ArticleDetailFormatUrl, new object[] { title, articleId });
         }
     }
 }
