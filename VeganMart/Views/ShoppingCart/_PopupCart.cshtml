@@ -1,0 +1,87 @@
+﻿
+
+<div class="modal fade" id="modalMyCart" tabindex="-1" role="dialog" aria-labelledby="modalMyCartLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="modalMyCartLabel">Bạn có {{OrderDetails.length}} sản phẩm trong giỏ hàng.</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá tiền</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="line-item" ng-repeat="item in OrderDetails">
+                            <td class="item-image">
+                                <img ng-src="{{item.ProductImage}}" class="img-responsive" style="max-height:60px;" />
+                            </td>
+                            <td class="item-title">
+                                <a href="/san-pham/{{item.ProductCode}}.html">
+                                    {{item.ProductName}}<br>
+                                    <span ng-if="item.IsVariant==true">{{item.VariantName}}</span>
+                                </a>
+                            </td>
+                            <td class="item-quantity">
+                                <input type="number" class="text" ng-model="item.Quantity" ng-change="updateItemCart(item)" />
+                            </td>
+                            <td class="item-price">{{item.Amount|number:0}}₫</td>
+                            <td class="item-delete"><a ng-click="removeItemCart(item)" href="javascript:void(0)">Xóa</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="total-price-modal">
+                            Tổng cộng : <span class="item-total">{{ Amount| number:0 }}₫</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-top-10">
+                    <div class="col-lg-6">
+                        <div class="comeback text-left">
+                            <a href="/san-pham.html">
+                                <i class="fa fa-chevron-circle-left "></i> Tiếp tục mua hàng
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <div class="buttons btn-modal-cart">
+                            <a class="btn btn-default" href="/thanh-toan.html">
+                                Đặt hàng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCallMe" tabindex="-1" role="dialog" aria-labelledby="modalCallMeLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Cám ơn Qúy Khách đã liên hệ đặt hàng</h2>
+                <p>Shop sẽ gọi lại để tư vấn cho Quý khách hàng trong thời gian sớm nhất</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

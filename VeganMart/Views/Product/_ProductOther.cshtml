@@ -1,0 +1,24 @@
+﻿
+@using PublicModel
+@model ProductModelBox
+@{
+    int itemIndex = 1;
+}
+
+@if (Model != null && Model.ProductList != null && Model.ProductList.Count > 0)
+{
+    <div class="product-content product-other">
+        <h2 title="products" class="page_heading ">
+            Sản phẩm liên quan
+        </h2>
+        <div class="product_list grid clearfix">
+            @foreach (var item in Model.ProductList)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow @((itemIndex - 1) % 4 == 0 ? "clear" : "")">
+                    @Html.Partial("_Item", item)
+                </div>
+                itemIndex++;
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,12 @@
+﻿
+@Html.Partial("~/Views/Home/_SlideShow.cshtml")
+
+@Html.Partial("~/Views/Home/_Adv.cshtml")
+
+
+<div class="col-md-3">
+    @Html.Action("ArticleTop", "Article", new { cateId = 0, top = 5 })
+</div>
+<div class="col-md-9">
+    @Html.Action("ProductTop", "Product", new { cateId = 1, top = 8 })
+</div>

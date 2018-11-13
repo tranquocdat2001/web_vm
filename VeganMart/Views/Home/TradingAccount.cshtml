@@ -1,0 +1,29 @@
+﻿
+<div class="col-md-9">
+
+    @Html.Action("Breadcrumb", "Category", new { cateName = "Tài khoản giao dịch" })
+
+    <div class="page-option">
+        <h1 class="title">
+            <span>Tài khoản giao dịch</span>
+        </h1>
+        <div class="page-option-block">
+            <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 16px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                <strong style="border: 0px; margin: 0px; padding: 0px;">1. Tài khoản Vietcombank</strong>
+            </p>
+            <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                Chủ TK: Trần Thanh Tú, 0251001769087, Chi nhánh Bình Tây
+            </p>
+            <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 16px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                <strong style="border: 0px; margin: 0px; padding: 0px;">2. Tài khoản Agribank</strong>
+            </p>
+            <p style="border: 0px; margin: 0px 0px 20px; padding: 0px; font-size: 14px; color: rgb(51, 51, 51); font-family: Arial, Tahoma, Verdana; line-height: 20px;">
+                Chủ TK: Bùi Thị Ánh, 1603205278210, Chi nhánh Lý Thường Kiệt
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    @Html.Partial("~/Views/Home/_SupportOnline.cshtml")
+</div>

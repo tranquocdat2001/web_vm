@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.MetaTitle = "Tạo sitemap";
+}
+<div class="block-intro">
+    <div class="main">
+        <div class="row clearfix">
+            <form action="#" method="post" id="frmGenSitemap" onsubmit="return false">
+                <input type="password" id="txtPass" placeholder="Password" value="" />
+                <input type="date" id="txtDate" placeholder="Date" value="" />
+                <input type="submit" id="btnGenSitemap" value="Genarate Sitemap" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#frmGenSitemap").submit(function (e) {
+
+                password = $("#txtPass").val();
+                date = $("#txtDate").val();
+
+                $.post("/sitemap/GenarateSitemap", { password: password, date: date }, function (res) {
+                    alert(res.Message);
+                });
+            });
+        });
+    </script>
+}

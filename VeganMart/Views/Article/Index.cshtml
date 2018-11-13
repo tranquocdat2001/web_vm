@@ -1,0 +1,63 @@
+﻿
+@using PublicModel
+@model ArticleListModel
+
+<div id="blog-template">
+
+    <div class="col-md-9">
+
+        @*@Html.Action("Breadcrumb", "Category", new { cateId = Model.SearchInfo.CateId })*@
+        @Html.Action("Breadcrumb", "Category", new { cateName = "Tin tức" })
+
+        @if (Model != null)
+        {
+            <div class="news-content">
+                <h1 class="page_heading ">
+                    @Model.TitlePage
+                </h1>
+                <div class="sortPagibar m-b-15 clearfix">
+                    <div class="pull-left">
+
+                        <div class="total_search">
+                            <span>@Model.PagingInfo.Count.ToString("#,###")</span> kết quả được tìm thấy
+                        </div>
+                    </div>
+                </div>
+                @if (Model.ArticleList != null && Model.ArticleList.Count > 0)
+                {
+                    <div class="blog_wrap">
+                        @foreach (var item in Model.ArticleList)
+                        {
+                            <article class="blog_item clearfix">
+                                <div class="blog_item_image text-center">
+                                    <a href="@item.URL" title="@item.Title">
+                                        <img class="first-img" src="@item.GetAvatar(Const.Size350x350)" alt="@item.Title" />
+                                    </a>
+                                </div>
+                                <div class="blog_item_content">
+                                    <a href="@item.URL" title="@item.Title">
+                                        <h2 title="@item.Title">@item.Title</h2>
+                                    </a>
+                                    <p>
+                                        Ngày: @item.PublishedDate
+                                    </p>
+                                    <div class="blog-content-short-description">
+                                        <p>@item.Description</p>
+                                    </div>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                }
+            </div>
+
+            @Html.Action("Index", "Paging", Model.PagingInfo)
+        }
+    </div>
+
+    <div class="col-md-3">
+        @Html.Partial("~/Views/Article/_ArticleMenu.cshtml")
+        @Html.Action("ArticleTop", "Article", new { cateId = 1, top = 5 })
+    </div>
+
+</div>

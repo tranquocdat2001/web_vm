@@ -1,0 +1,143 @@
+﻿
+
+<div class="footer">
+    <footer class="footer-content">
+        <div class="footer_top">
+            <div class="container">
+                <div class="footer_top_wrap">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <!-- footer col 1 -->
+                            <div class="footer_block">
+                                <h4 class="footer_block_title">
+                                    Về chúng tôi
+                                </h4>
+                                <div class="block_content">
+                                    <ul class="list_group">
+                                        <li class="item">
+                                            <a href="/gioi-thieu">
+                                                Giới thiệu
+                                            </a>
+                                        </li>
+                                        @*<li class="item">
+                                                <a href="/giao-hang-doi-tra">
+                                                    Giao hàng - Đổi trả
+                                                </a>
+                                            </li>*@
+                                        <li class="item">
+                                            <a href="/chinh-sach-bao-mat">
+                                                Chính sách bảo mật
+                                            </a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="/lien-he">
+                                                Liên hệ
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End footer col 1 -->
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <!-- footer col 1 -->
+                            <div class="footer_block">
+                                <h4 class="footer_block_title">
+                                    Trợ giúp
+                                </h4>
+                                <div class="block_content">
+                                    <ul class="list_group">
+                                        <li class="item">
+                                            <a href="/huong-dan-mua-hang">
+                                                Hướng dẫn mua hàng
+                                            </a>
+                                        </li>
+                                        @*<li class="item">
+                                                <a href="/huong-dan-thanh-toan">
+                                                    Hướng dẫn thanh toán
+                                                </a>
+                                            </li>*@
+                                        <li class="item">
+                                            <a href="/tai-khoan-giao-dich">
+                                                Tài khoản giao dịch
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End footer col 1 -->
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <!-- footer col 3 -->
+                            <div class="footer_block">
+                                <h4 class="footer_block_title">
+                                    Đăng ký nhận bản tin
+                                </h4>
+                                <div class="block_content">
+                                    <div class="des_newsletter_form">
+                                        Đăng Ký Thành Viên Để Nhận Bản Tin Mỗi Ngày:
+                                    </div>
+                                    <form id="newsletter_form" ng-submit="registerNewsletter()" class="m-b-20 contact-form ng-pristine ng-valid-email ng-invalid ng-invalid-required">
+                                        <div class="newsletter_wrap">
+                                            <input ng-model="newsletter.Email" required="" id="contact_email" autocomplete="off" type="email" class="ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required">
+                                            <label>Email của bạn </label>
+                                            <button class="btn-newsletter" type="submit">
+                                                <span><i class="fa fa-paper-plane-o"></i></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- End footer col 3 -->
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <!-- footer col 4 -->
+                            <div class="footer_block">
+                                <h4 class="footer_block_title">
+                                    Theo dõi trên Fanpage
+                                </h4>
+                                <div class="block_content">
+                                    <div class="fb-page fb_iframe_widget" data-small-header="true" data-href="https://www.facebook.com/@Const.Domain" data-tabs="message" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" fb-xfbml-state="rendered" fb-iframe-plugin-query=""><span style="vertical-align: bottom; width: 0px; height: 0px;"><iframe name="f2689d7e63f6e9c" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:page Facebook Social Plugin" src="" style="border: none; visibility: visible; width: 0px; height: 0px;" class=""></iframe></span></div>
+                                </div>
+                            </div>
+                            <!-- End footer col 4 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="footer_bottom_wrap">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="footer_address">
+                                <p><span>@Const.Companny.ToUpper()</span></p>
+                                <p><span>Địa chỉ: @Const.Address</span></p>
+                                <p>@*<span>Số điện thoại: (08) 66 85 85 38</span>*@</p>
+                                <p><span>Số di động: @Const.Hotline</span></p>
+                                <p><span>Email: @Const.EmailSupport</span></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 text-right text-center-xs">
+                            <div class="copy_right">
+                                <p>
+                                    © 2017. Bản quyền thuộc về <a rel="nofollow" href="@Const.BaseUrlNoSlash">SeaFood Store</a>. Powered by <a href="@Const.BaseUrlNoSlash">@Const.Domain</a>
+                                </p>
+                            </div>
+                            <div class="social_footer">
+                                <ul>
+                                    <li><a><span><i class="fa fa-facebook"></i></span></a></li>
+                                    <li><a><span><i class="fa fa-twitter"></i></span></a></li>
+                                    <li><a><span><i class="fa fa-google-plus"></i></span></a></li>
+                                    <li><a><span><i class="fa fa-youtube"></i></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>

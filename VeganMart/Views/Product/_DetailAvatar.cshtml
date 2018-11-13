@@ -1,0 +1,77 @@
+﻿
+@using PublicModel
+@model ProductModelDetail
+
+@{
+    List<ProductImage> lstImage = Model.ListImage;
+    int countImage = Model.ListImage.Count;
+}
+
+<div id="divAlbum" class="group-image-detail">
+    <div class="img">
+        @if (countImage > 1)
+        {
+            <div class="group-image-prd clearfix" id="osgslide">
+                <div class="show-img main-img">
+                    <a rel="nofollow" href="javascript:void(0)">
+                        <img alt="@Model.Name" rel="imagegallery-0" src="@BuildLink.CropImage(lstImage[0].Link, Const.Size600x600)">
+                    </a>
+                    <span class="num-img"><span id="countimage">1</span>/@countImage</span>
+                </div>
+                <div class="slide-thumb hidden-xs hidden-sm">
+                    <div class="list-thumb">
+                        <div class="content-listthumb">
+                            @for (int i = 0; i < countImage; i++)
+                            {
+                                <div class="thumb osgslideimg @(i == 0 ? "osgslide-active" : "")">
+                                    <img rel="imagegallery-@(i)" alt="@Model.Name-@(i)" src="@BuildLink.CropImage(lstImage[i].Link, Const.Size600x600)">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div id="aniimated-thumbnials" style="display:none">
+                        @for (int i = 0; i < countImage; i++)
+                        {
+                            <span class="imageGallery" id="imagegallery-@i" data-src="@BuildLink.CropImage(lstImage[i].Link)" data-desc="@Model.Name-@(i)">
+                                <img src="@BuildLink.CropImage(lstImage[i].Link, Const.Size73x55)" alt="@Model.Name-@(i)" />
+                            </span>
+                        }
+                    </div>
+                    <span class="slide-prev noneclick">
+                        <i class="icon-left-open-4"></i>
+                    </span>
+                    <span class="slide-next">
+                        <i class="icon-right-open-4"></i>
+                    </span>
+                </div>
+
+            </div>
+
+            @Html.Hidden("hddSmallThumb", Const.Size73x55)
+            @Html.Hidden("hddLargeThumb", Const.Size600x600)
+            @Html.Hidden("hddCountImage", countImage)
+        }
+        else if (countImage == 1)
+        {
+            <div class="group-image-prd clearfix">
+                <div id="detail_one_image" class="show-img main-img">
+                    <a rel="nofollow" href="@BuildLink.CropImage(lstImage[0].Link)">
+                        <img alt="@Model.Name" rel="imagegallery-0" src="@BuildLink.CropImage(lstImage[0].Link, Const.Size600x600)">
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="group-image-detail">
+                <div class="main-img" style="height:auto">
+                    <div class="group-slide no-img">
+                        <div class="img-default">
+                            <i class="icon-picture"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,109 @@
+﻿
+@using PublicModel
+@model ProductListModel
+@{
+    int itemIndex = 1;
+}
+
+<div id="collection">
+
+    <div class="col-md-9">
+
+        @*<div class="breadcrumb clearfix">
+                <ul>
+                    <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
+                        <a title="Đến trang chủ" href="/" itemprop="url"><span itemprop="title">Trang chủ</span></a>
+                    </li>
+                    <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="category17 icon-li">
+                        <div class="link-site-more">
+                            <a title="" href="/san-pham/tom-33806" itemprop="url">
+                                <span itemprop="title">T&#244;m</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>*@
+        @*<script type="text/javascript">
+                $(".link-site-more").hover(function () { $(this).find(".s-c-n").show(); }, function () { $(this).find(".s-c-n").hide(); });
+            </script>*@
+
+        @Html.Action("Breadcrumb", "Category", new { cateId = Model.SearchInfo.CateId })
+
+        @if (Model != null)
+        {
+            <div class="product-content">
+                <h1 title="products" class="page_heading ">
+                    @Model.TitlePage
+                </h1>
+                <div class="sortPagibar m-b-15 clearfix">
+                    <div class="pull-left">
+                        @*<div class="collection_view">
+                                <button type="button" title="Gird" class="change_view change_view_active" data-view="grid">
+                                    <span class="icon_fallback_text">
+                                        <span class="fa fa-th" aria-hidden="true"></span>
+                                        <span class="fallback-text hidden">Dạng lưới</span>
+                                    </span>
+                                </button>
+                                <button type="button" title="List" class="change_view" data-view="list">
+                                    <span class="icon_fallback_text">
+                                        <span class="fa fa-th-list" aria-hidden="true"></span>
+                                        <span class="fallback-text hidden">Dạng danh sách</span>
+                                    </span>
+                                </button>
+                            </div>*@
+                        <div class="total_search">
+                            <span>@Model.PagingInfo.Count.ToString("#,###")</span> kết quả được tìm thấy
+                        </div>
+                    </div>
+                    @if (Model.PagingInfo.Count > 0)
+                    {
+                        <div class="pull-right">
+                            <div class="browse-tags">
+                                <span class="sort-view">Sắp xếp:</span>
+                                <span class="custom-dropdown custom-dropdown--white">
+                                    <select class="selectProductSort sort-by custom-dropdown__select custom-dropdown__select--white" id="lbsort" onchange="Arrange('@Const.ArrangeProduct', this.value)">
+                                        <option @(Model.SearchInfo.OrderBy == (int)Enums.OrderBy.Default ? "selected" : "") value="@((int)Enums.OrderBy.Default)">Mặc định</option>
+                                        <option @(Model.SearchInfo.OrderBy == (int)Enums.OrderBy.PriceAsc ? "selected" : "") value="@((int)Enums.OrderBy.PriceAsc)">Giá tăng dần</option>
+                                        <option @(Model.SearchInfo.OrderBy == (int)Enums.OrderBy.PriceDesc ? "selected" : "") value="@((int)Enums.OrderBy.PriceDesc)">Giá giảm dần</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                    }
+                </div>
+                @if (Model.ProductList != null && Model.ProductList.Count > 0)
+                {
+                    <div class="product_list grid clearfix">
+                        @foreach (var item in Model.ProductList)
+                        {
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow @((itemIndex - 1) % 4 == 0 ? "clear" : "")">
+                                @Html.Partial("_Item", item)
+                            </div>
+                            itemIndex++;
+                        }
+                    </div>
+                }
+            </div>
+
+            @Html.Action("Index", "Paging", Model.PagingInfo)
+        }
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="menu-product menu-product-group">
+            <h3>
+                <span>
+                    T&#244;m
+                </span>
+            </h3>
+            <ul class='level0'></ul>
+        </div>
+
+        @Html.Partial("~/Views/Category/_MenuRight.cshtml")
+
+        @Html.Action("ProductHot", "Product", new { cateId = 1, top = 5 })
+    </div>
+
+</div>
+

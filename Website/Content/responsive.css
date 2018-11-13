@@ -1,0 +1,5 @@
+@media (max-width: 767px) {
+.payment-content .payment-block .payment-step .step-preview {
+  min-height:0;
+}
+}

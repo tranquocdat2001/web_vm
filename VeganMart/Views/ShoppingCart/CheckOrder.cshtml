@@ -1,0 +1,118 @@
+﻿
+
+<div class="col-md-12">
+
+    @Html.Action("Breadcrumb", "Category", new { cateName = "Kiểm tra đơn hàng" })
+
+    <div class="order-tracking-content clearfix">
+        <h1 class="title"><span>Kiểm tra đơn hàng</span></h1>
+        <div class="order-tracking-block">
+
+            <form class="form-inline order-input" ng-submit="searchOrder()">
+                <div class="form-group">
+                    <label>Nhập mã đơn hàng</label>
+                    <input type="text" class="form-control" placeholder="Mã số đơn hàng (VD:123456789)" />
+
+                    <button class="btn btn-primary">Xem ngay</button>
+                </div>
+            </form>
+
+            <div>
+                <h2>Thông tin đơn hàng</h2>
+                <div class="row-title docs">Đơn hàng của <a href="#" class="ng-binding">Kim Mỹ</a><b class="ng-binding"> (#100000031)</b> lúc <span class="grey ng-binding">2018-11-03T23:07:23.59</span></div>
+                <div class="table-responsive clearfix order-tracking-info">
+                    <table class="table table-mycart">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th colspan="2">Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in OrderDetails" class="ng-scope">
+                                <td class="ng-binding">1</td>
+                                <td class="image">
+                                    <a href="/san-pham/ngao-2-coi.html">
+                                        <img src="~/Content/demo/oc.jpg" class="img-responsive" alt="" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/san-pham/ngao-2-coi.html" class="ng-binding">Ngao 2 cồi</a>
+                                    <p class="note ng-binding ng-scope" ng-if="item.IsVariant==true">25-30 con/kg</p>
+                                </td>
+                                <td class="ng-binding">190000 đ</td>
+                                <td class="ng-binding">1</td>
+                                <td class="ng-binding">190,000 đ</td>
+                            </tr>
+                            <tr ng-repeat="item in OrderDetails" class="ng-scope">
+                                <td class="ng-binding">2</td>
+                                <td class="image">
+                                    <a href="/san-pham/oc-mong-tay.html">
+                                        <img src="~/Content/demo/oc.jpg" class="img-responsive" alt="" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/san-pham/oc-mong-tay.html" class="ng-binding">Ốc móng tay</a>
+                                    <p class="note ng-binding ng-scope" ng-if="item.IsVariant==true">15-20 con/kg</p>
+                                </td>
+                                <td class="ng-binding">370000 đ</td>
+                                <td class="ng-binding">2</td>
+                                <td class="ng-binding">740,000 đ</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="border-right">
+                                    <div class="box-customer-content">
+                                        <div class="title"><span>Thông tin giao hàng</span></div>
+                                        <div>[Anh/Chị]<b class="ng-binding"> Kim Mỹ</b></div>
+                                        <div class="ng-binding">
+                                            no.reply.webone@gmail.com |
+                                            |
+
+                                        </div>
+                                    </div>
+                                    <div class="box-customer-content">
+                                        <div class="title"><span>Thông tin thanh toán</span></div>
+                                        <div>[Anh/Chị]<b class="ng-binding">Kim Mỹ</b></div>
+                                        <div class="ng-binding">
+                                            no.reply.webone@gmail.com |
+                                            |
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-left"><b>Tổng tiền thanh toán</b></td>
+                                                <td class="text-right ">
+                                                    <b class="total-payment ng-binding">
+                                                        930,000
+                                                    </b>
+                                                    <p class="note"></p>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center order-stt">
+                                                <td colspan="2">
+                                                    <div>Trạng thái đơn hàng</div>
+                                                    <div><b class="ng-binding">Chưa</b></div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="button text-right">
+                    <a class="btn btn-default" href="/don-hang">Trở về danh sách đơn hàng</a>
+                    <a class="btn btn-primary" href="/">Tiếp tục mua hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

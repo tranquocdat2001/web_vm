@@ -1,0 +1,107 @@
+﻿
+<div class="col-md-3">
+    @Html.Partial("~/Views/Member/_MenuMember.cshtml")
+</div>
+
+<div class="col-md-9">
+
+    @Html.Action("Breadcrumb", "Category", new { cateName = "Đơn hàng của tôi" })
+
+    <div class="myorder-content myorder-detail-content clearfix">
+        <h1 class="title"><span>Đơn hàng của tôi</span></h1>
+        <div class="myorder-block">
+            <div class="row-title docs">Đơn hàng của <a href="#">Kim Mỹ</a><b> (#100000031)</b> lúc <span class="grey">23:07 03/11/2018</span></div>
+            <div class="table-responsive clearfix myorder-info">
+                <table class="table table-mycart">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th colspan="2">Tên sản phẩm</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="image">
+                                <a href="/san-pham/ngao-2-coi.html"><img class="img-responsive" src="/Uploads/shop2005/images/product/ngao-2-coi-1_master.jpg"></a>
+                            </td>
+                            <td>
+                                <a href="/san-pham/ngao-2-coi.html">Ngao 2 cồi</a>
+                                <!-- ngIf: it.IsVariant==true -->
+                            </td>
+                            <td>ngao-2-coi</td>
+                            <td>190.000đ</td>
+                            <td>1</td>
+                            <td>190.000đ</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="image">
+                                <a href="/san-pham/oc-mong-tay.html"><img class="img-responsive" src="/Uploads/shop2005/images/product/oc-mong-tay-1_master.jpg"></a>
+                            </td>
+                            <td>
+                                <a href="/san-pham/oc-mong-tay.html">Ốc móng tay</a>
+                                <!-- ngIf: it.IsVariant==true -->
+                            </td>
+                            <td>oc-mong-tay</td>
+                            <td>370.000đ</td>
+                            <td>2</td>
+                            <td>740.000đ</td>
+                        </tr>
+                        <tr>
+                            <td class="border-right" colspan="3">
+                                <div class="box-customer-content">
+                                    <div class="title docs"><span>Thông tin giao hàng</span></div>
+                                    <div>[Anh/Chị]<b> Kim Mỹ</b></div>
+                                    <div>
+                                        no.reply.webone@gmail.com |
+                                        |
+
+                                    </div>
+                                </div>
+                                <div class="box-customer-content">
+                                    <div class="title"><span>Thông tin thanh toán</span></div>
+                                    <div>[Anh/Chị]<b>Kim Mỹ</b></div>
+                                    <div>
+                                        no.reply.webone@gmail.com |
+                                        |
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="4">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left"><b>Tổng tiền thanh toán</b></td>
+                                            <td class="text-right ">
+                                                <b class="total-payment">
+                                                    930.000đ
+                                                </b>
+                                                <div class="help-block">Bao gồm VAT</div>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center order-stt">
+                                            <td colspan="2">
+                                                <div class="docs">Trạng thái đơn hàng</div>
+                                                <div class="docs"><b>Chưa</b></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="button text-right">
+                <a class="btn btn-default" href="/don-hang">Trở về danh sách đơn hàng</a>
+                <a class="btn btn-primary" href="/">Tiếp tục mua hàng</a>
+            </div>
+        </div>
+    </div>
+</div>

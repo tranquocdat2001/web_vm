@@ -1,0 +1,48 @@
+﻿
+@using PublicModel
+@model List<BreadcrumbModel>
+
+@if (Model.Count > 0)
+{
+    <div class="breadcrumb clearfix">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+                    @if (item.ListSub == null || item.ListSub.Count == 0)
+                    {
+                        if (!string.IsNullOrEmpty(item.Url))
+                        {
+                            <a title=" @item.Name" href="@item.Url" itemprop="@item.Url">
+                                <span itemprop="title">@item.Name</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <span itemprop="title">@item.Name</span>
+                        }
+                    }
+                    else
+                    {
+                        <div class="link-site-more">
+                            <a title=" @item.Name" href="@item.Url" itemprop="@item.Url">
+                                <span itemprop="title">@item.Name</span>
+                                <img width="13" height="13" src="~/Content/images/icon-link-more.jpg" alt="more" />
+                            </a>
+                            <ul class="s-c-n">
+                                @foreach (var itemSub in item.ListSub)
+                                {
+                                    <li class="sprites">
+                                        <a title=" @itemSub.Name" href="@itemSub.Url" itemprop="@itemSub.Url">
+                                            <span itemprop="title">@itemSub.Name</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+}

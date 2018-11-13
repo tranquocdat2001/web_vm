@@ -1,0 +1,18 @@
+﻿
+@using PublicModel
+@model ArticleModelBox
+
+@if (Model != null && Model.ArticleList != null && Model.ArticleList.Count > 0)
+{
+    <div class="extra_blogs">
+        <h4>
+            Tin cùng danh mục
+        </h4>
+        <ul>
+            @foreach (var item in Model.ArticleList)
+            {
+                <li><a href="@item.URL">@item.Title (@item.PublishedDate)</a></li>
+            }
+        </ul>
+    </div>
+}

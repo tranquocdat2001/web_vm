@@ -1,0 +1,91 @@
+﻿
+<div id="page">
+    <div class="col-md-3">
+        @Html.Partial("~/Views/Home/_SupportOnline.cshtml")
+    </div>
+
+    <div class="col-md-9">
+
+        @Html.Action("Breadcrumb", "Category", new { cateName= "Liên hệ" })
+
+        <!--Begin-->
+        <div class="contact-content clearfix">
+            <div class="content clearfix">
+                <h1 title="liên hệ">
+                    Liên hệ
+                </h1>
+                <div class="col-md-12 col-xs-12 col-sm-12 m-b-30">
+                    @*<div class="map clearfix">
+                        <div class="map-canvas" id="map_canvas"></div>
+                        <div class="map-information">
+                            <ul class="clearfix">
+                                <li>
+                                    <div>
+                                        <a onclick="moveToMaker({{item.Id}}); return false;" href="javascript:void(0)">
+                                            abc
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>*@
+                    <div id="map_contact">
+                        <input type="hidden" id="hdX" value="@Const.MapPositionX" />
+                        <input type="hidden" id="hdY" value="@Const.MapPositionY" />
+                    </div>
+                </div>
+
+                <div class="col-md-7" id="col-left contactFormWrapper">
+                    <h3>Liên hệ với chúng tôi</h3>
+                    <hr class="line-left">
+                    <p>
+                        Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể.
+                    </p>
+                    <form ng-submit="sendContact()">
+                        <div class="form-group">
+                            <label for="contactFormName" class="sr-only">Tên</label>
+                            <input required="" id="contactFormName" class="form-control input-lg" ng-model="Name" placeholder="Tên của bạn" autocapitalize="words" value="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactFormName" class="sr-only">Số điện thoại</label>
+                            <input required="" id="contactFormPhone" class="form-control input-lg" ng-model="Phone" placeholder="Số điện thoại của bạn" autocapitalize="words" value="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactFormEmail" class="sr-only">Email</label>
+                            <input required="" name="contact[email]" placeholder="Email của bạn" ng-model="Email" class="form-control input-lg" autocorrect="off" autocapitalize="off" value="" type="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactFormTitle" class="sr-only">Tiêu đề</label>
+                            <input required="" id="contactFormTitle" class="form-control input-lg" ng-model="Title" placeholder="Tiêu đề" value="" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactFormMessage" class="sr-only">Nội dung</label>
+                            <textarea required="" rows="6" ng-model="Content" class="form-control" placeholder="Viết bình luận" id="contactFormMessage"></textarea>
+                        </div>
+                        <input class="btn btn-primary btn-lg" value="Gửi liên hệ" type="submit">
+                    </form>
+                </div>
+                <div class="col-md-5" id="col-right">
+                    <h3>Địa chỉ liên lạc</h3>
+                    <hr class="line-right">
+                    <h3 class="name-company">@Const.Companny</h3>
+                    <p class="ng-binding"></p>
+                    <ul class="info-address">
+                        <li class="m-b-5">
+                            <i class="glyphicon glyphicon-map-marker m-r-5"></i>
+                            <span>@Const.Address</span>
+                        </li>
+                        <li class="m-b-5">
+                            <i class="glyphicon glyphicon-envelope m-r-5"></i>
+                            <span>@Const.EmailSupport</span>
+                        </li>
+                        <li class="m-b-5">
+                            <i class="glyphicon glyphicon-phone-alt m-r-5"></i>
+                            <span>@Const.Hotline</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿
+<!DOCTYPE html>
+<html lang="vi" xml:lang="vi">
+<head>
+    <title>@Html.Raw(!string.IsNullOrEmpty(ViewBag.MetaTitle) ? ViewBag.MetaTitle : Const.DomainTitle)</title>
+    <meta charset="utf-8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="fb:app_id" content="227481454296289" />
+    <meta property="og:site_name" content="@Const.Domain" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="@(ViewBag.OriginUrl != null ? ViewBag.OriginUrl : Const.BaseUrlNoSlash + Request.RawUrl)" />
+    <link rel="shortcut icon" href="@Const.BaseUrlNoSlash/favicon.ico" type="image/x-icon" />
+
+    <link href="/Uploads/shop2005/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+
+    @if (ViewBag.SocialImage != null && !string.IsNullOrEmpty(ViewBag.SocialImage))
+    {
+        <meta property="og:image" content="@ViewBag.SocialImage" />
+        <meta property="og:image:type" content="image/jpg" />
+        <meta property="og:image:width" content="620" />
+        <meta property="og:image:height" content="324" />
+    }
+    else
+    {
+        <meta property="og:image" content="@Const.BaseUrlNoSlash/logo.png" />
+        <meta property="og:image:type" content="image/jpg" />
+        <meta property="og:image:width" content="620" />
+        <meta property="og:image:height" content="324" />
+    }
+    @Html.Raw(ViewBag.Meta)
+
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
+    <!--[if lt IE 9]>
+        <script src="/assets/100004/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <link href="~/Content/responsive.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    @*@Styles.Render("~/WIS/webstyles")*@
+
+    @RenderSection("style", required: false)
+    @Html.Partial("~/Views/SocialAndStatistics/_FacebookModerators.cshtml")
+    @Html.Partial("~/Views/SocialAndStatistics/_GoogleAnalyticsEmbed.cshtml")
+</head>
+<body>
+    @Html.Partial("~/Views/SocialAndStatistics/_FacebookEmbed.cshtml")
+
+    <div class="loader_overlay"></div>
+    <div id="opacity" class=""></div>
+
+    <div class="wrapper">
+        @Html.Partial("_Header")
+        @RenderBody()
+        @Html.Partial("_Footer")
+    </div>
+    <div style="display: none;" id="loading-mask">
+        <div id="loading_mask_loader" class="loader">
+            <img alt="Loading..." src="/Images/ajax-loader-main.gif" />
+            <div>
+                Please wait...
+            </div>
+        </div>
+    </div>
+    <a href="javascript:void(0);" class="back-to-top" ref="nofollow"><span>Top</span></a>
+
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    @*@Scripts.Render("~/WIS/commonscripts")
+    @Scripts.Render("~/WIS/scriptsweb")*@
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

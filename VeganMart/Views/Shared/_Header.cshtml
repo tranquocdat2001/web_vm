@@ -1,0 +1,208 @@
+﻿
+<section class="top-link clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav navbar-nav topmenu-contact pull-left">
+                    <li><i class="fa fa-phone"></i> <span>Hotline:@Const.Hotline</span></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
+                    <li class="order-check"><a href="/kiem-tra-don-hang"><i class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng</a></li>
+                    <li class="order-cart"><a href="/gio-hang"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                    @*<li class="webmaster"><a href="/admin"><i class="fa fa-gears"></i> Quản trị website</a></li>
+                    <li class="account-info">
+                        <a href="/thong-tin-tai-khoan.html">no.reply.webone@gmail.com</a>
+                        <a class="account-logout" id="btnLogOff" href="javascript:void(0)" title="">[Thoát] </a>
+                    </li>*@
+                    <li class="account-login"><a href="/dang-nhap"><i class="fa fa-sign-in"></i> Đăng nhập </a></li>
+                    <li class="account-register"><a href="/dang-ky"><i class="fa fa-key"></i> Đăng ký </a></li>
+                </ul>
+                <div class="show-mobile hidden-lg hidden-md">
+                    <div class="quick-user">
+                        <div class="quickaccess-toggle">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="inner-toggle">
+                            <ul class="login links">
+                                <li>
+                                    <a href="/dang-ky"><i class="fa fa-sign-in"></i> Đăng ký</a>
+                                </li>
+                                <li>
+                                    <a href="/dang-nhap"><i class="fa fa-key"></i> Đăng nhập</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="quick-access">
+                        <div class="quickaccess-toggle">
+                            <i class="fa fa-list"></i>
+                        </div>
+                        <div class="inner-toggle">
+                            <ul class="links">
+                                <li><a id="mobile-wishlist-total" href="/kiem-tra-don-hang" class="wishlist"><i class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng</a></li>
+                                <li><a href="/gio-hang" class="shoppingcart"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav"></ul>
+        </div>
+    </div>
+</div>*@
+
+<header id="wr_header">
+    <div id="header">
+        <div id="header_main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-8">
+                        <!--logo-->
+
+                        <h1 class="pull-left">
+                            <a href="/" class="logo" title="">
+                                <img src="/Content/images/logo.png" alt="" title="">
+                            </a>
+                        </h1>
+
+                        <!-- end logo -->
+                    </div>
+                    <div class="col-lg-6 col-md-5 col-sm-4 hidden-xs">
+                        <!-- Search -->
+                        <div class="search_box">
+                            <div class="search_wrapper">
+                                <input type="text" name="search" class="index_input_search" id="txtsearch" onblur="if(this.value=='')this.value='Nhập từ khóa tìm kiếm...'" onfocus="if(this.value=='Nhập từ khóa tìm kiếm...')this.value=''" value="Nhập từ khóa tìm kiếm...">
+                                <button class="btn_search_submit btn " type="button" id="btnsearch"><span>Tìm ngay</span></button>
+                            </div>
+                        </div>
+                        <!-- End Search -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <!-- Cart -->
+                        <div class="cart_header">
+                            <a href="/gio-hang" title="Giỏ hàng">
+                                <span class="cart_header_icon"></span>
+                                <span class="box_text">
+                                    <strong class="cart_header_count">Giỏ hàng <span>(0)</span></strong>
+                                    <span class="cart_price">0₫</span>
+                                </span>
+                            </a>
+                            <div class="cart_clone_box">
+                                <div class="cart_box_wrap hidden">
+                                    <div class="cart_item original clearfix">
+                                        <div class="cart_item_image"></div>
+                                        <div class="cart_item_info">
+                                            <p class="cart_item_title"><a href="" title=""></a></p>
+                                            <span class="cart_item_quantity"></span>
+                                            <span class="cart_item_price"></span>
+                                            <span class="remove"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cart_header_top_box">
+                                <div class="cart_empty">Giỏ hàng của bạn vẫn chưa có sản phẩm nào.</div>
+                            </div>
+                        </div>
+                        <!-- End Cart -->
+                        <!-- Account -->
+                        <div class="user_login">
+                            <div class="user_login_icon"></div>
+                            <div class="box_text">
+                                <strong>Tài khoản</strong>
+                                <!--<span class="cart_price">Đăng nhập, đăng ký</span>-->
+                            </div>
+                            <div class="user_box">
+                                <ul>
+                                    <li><a href="/dang-nhap">Đăng nhập</a></li>
+                                    <li><a href="/dang-ky">Đăng ký</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End account -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header_mobile">
+            <div class="container">
+                <div class="row">
+                    <!-- Menu mobile -->
+                    <button type="button" class="navbar-toggle collapsed" id="trigger_click_mobile">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div id="mobile_wrap_menu" class="visible-xs visible-sm">
+                        <div class="user_mobile">
+                            <div class="icon_user_mobile">
+                                <img src="/Content/images/user_mobile.png" alt="account">
+                            </div>
+                            <div class="login_mobile">
+
+                                <a href="/dang-nhap" class="login-btn">Đăng nhập </a><a href="/dang-ky" class="login-btn"> / Đăng ký</a>
+                            </div>
+                            <div class="close_menu"></div>
+                        </div>
+                        <div class="content_menu">
+                            <ul>
+                                <li class="level0"><a class="" href="/"><span>Trang chủ</span></a></li>
+                                <li class="level0"><a class="" href="/gioi-thieu"><span>Giới thiệu</span></a></li>
+                                <li class="level0"><a class="" href="/san-pham"><span>Sản phẩm</span></a></li>
+                                <li class="level0"><a class="" href="/tin-tuc"><span>Tin tức</span></a></li>
+                                <li class="level0"><a class="" href="/lien-he"><span>Liên hệ</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End menu mobile -->
+                    <div class="pull-right mobile-menu-icon-wrapper">
+                        <!-- Logo mobile -->
+                        <div class="logo logo-mobile">
+                            <a href="/" title="@Const.Companny">
+                                <img src="/Content/images/logo.png" alt="@Const.Companny">
+                            </a>
+                        </div>
+                        <!-- End Logo mobile -->
+                        <!-- Cart mobile -->
+                        <div class="cart_header" id="cart-target">
+                            <a href="/gio-hang" title="Giỏ hàng">
+                                <div class="cart_header_icon"></div>
+                                <div class="box_text">
+                                    <strong class="cart_header_count"><span>0</span></strong>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- End Cart mobile -->
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- Search mobile -->
+                    <div class="search_mobile col-md-12">
+                        <div class="search_box">
+                            <div class="search_wrapper">
+                                <input type="text" name="search" class="index_input_search" id="txtsearch2" onblur="if(this.value=='')this.value='Nhập từ khóa tìm kiếm...'" onfocus="if(this.value=='Nhập từ khóa tìm kiếm...')this.value=''" value="Nhập từ khóa tìm kiếm...">
+                                <button class="btn_search_submit btn " type="button" id="btnsearch2"><span><i class="fa fa-search"></i></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End search mobile -->
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

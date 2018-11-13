@@ -1,0 +1,43 @@
+﻿
+@using Utilities
+@using PublicModel
+@model ProductModel
+
+@if (Model != null)
+{
+    <div class="product-block product-resize">
+        <div class="product-image image-resize">
+            @if (Model.SaleOffPrice > 0)
+            {
+                <div class="product-sale">
+                    <span class="sale-lb">-@Model.SaleOffPrice%</span>
+                </div>
+            }
+            @if (Model.Discount > 0)
+            {
+                <div class="sold-out">Hot</div>
+            }
+            <a href="@Model.URL" title="@Model.Name">
+                <img class="first-img" src="@Model.GetAvatar(Const.Size350x350)" alt="@Model.Name" />
+            </a>
+            <div class="product-actions hidden-xs">
+                <div class="btn-add-to-cart" onclick="AddToCard(@Model.ProductId,1)">
+                    <a href="javascript:void(0);"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                </div>
+                <div class="btn_quickview">
+                    <a class="quickview" href="@Model.URL"><i class="fa fa-eye"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="product-info text-center m-t-xxs-20">
+            <h3 class="title">
+                <a href="@Model.URL" title="@Model.Name">
+                    @Model.Name
+                </a>
+            </h3>
+            <div class="pro-prices">
+                <span class="pro-price">@Model.PriceFormat</span>
+            </div>
+        </div>
+    </div>
+}

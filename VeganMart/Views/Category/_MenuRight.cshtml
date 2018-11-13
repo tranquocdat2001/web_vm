@@ -1,0 +1,67 @@
+﻿
+
+
+<div class="menu-product">
+    <h3>
+        <span>
+            Sản phẩm
+        </span>
+    </h3>
+    <ul class='level0'>
+        <li class="child">
+            <span><a href='/san-pham/nghao-so-oc-33804'><i class='fa fa-arrow-circle-right'></i> Nghao - Sò - Ốc</a></span><span class='open-close'><i class='fa fa-angle-down'></i></span>
+            <ul class='level1 hidden-xs'>
+                <li><span><a href='/san-pham/ngao-33820'><i class='fa fa-check'></i> Ngao</a></span></li>
+                <li><span><a href='/san-pham/so-33821'><i class='fa fa-check'></i> Sò</a></span></li>
+                <li><span><a href='/san-pham/oc-33822'><i class='fa fa-check'></i> Ốc</a></span></li>
+                <li><span><a href='/san-pham/hau-33823'><i class='fa fa-check'></i> Hàu</a></span></li>
+            </ul>
+        </li>
+        <li><span><a href='/san-pham/bao-ngu-33805'><i class='fa fa-arrow-circle-right'></i> Bào ngư</a></span></li>
+        <li><span><a class='active' href='/san-pham/tom-33806'><i class='fa fa-arrow-circle-right'></i> Tôm</a></span></li>
+        <li><span><a href='/san-pham/muc-33807'><i class='fa fa-arrow-circle-right'></i> Mực</a></span></li>
+        <li class="child">
+            <span><a href='/san-pham/ca-33808'><i class='fa fa-arrow-circle-right'></i> Cá</a></span><span class='open-close'><i class='fa fa-angle-down'></i></span>
+            <ul class='level1 hidden-xs'>
+                <li><span><a href='/san-pham/ca-ngu-dai-duong-33824'><i class='fa fa-check'></i> Cá ngừ đại dương</a></span></li>
+                <li><span><a href='/san-pham/ca-hoi-33825'><i class='fa fa-check'></i> Cá hồi</a></span></li>
+            </ul>
+        </li>
+        <li class="child">
+            <span><a href='/san-pham/cua-nghe-33809'><i class='fa fa-arrow-circle-right'></i> Cua nghẹ</a></span><span class='open-close'><i class='fa fa-angle-down'></i></span>
+            <ul class='level1 hidden-xs'>
+                <li><span><a href='/san-pham/cua-33826'><i class='fa fa-check'></i> Cua</a></span></li>
+                <li><span><a href='/san-pham/nghe-33827'><i class='fa fa-check'></i> Nghẹ</a></span></li>
+            </ul>
+        </li>
+        <li><span><a href='/san-pham/sua-33810'><i class='fa fa-arrow-circle-right'></i> Sứa</a></span></li>
+        <li><span><a href='/san-pham/hai-san-dong-hop-che-bien-33811'><i class='fa fa-arrow-circle-right'></i> Hải sản đóng hộp - chế biến</a></span></li>
+        <li class="child">
+            <span><a href='/san-pham/hai-san-kho-33812'><i class='fa fa-arrow-circle-right'></i> Hải sản khô</a></span><span class='open-close'><i class='fa fa-angle-down'></i></span>
+            <ul class='level1 hidden-xs'>
+                <li><span><a href='/san-pham/hai-san-kho-33828'><i class='fa fa-check'></i> Hải sản khô</a></span></li>
+            </ul>
+        </li>
+        <li><span><a href='/san-pham/san-pham-khac-33813'><i class='fa fa-arrow-circle-right'></i> Sản phẩm khác</a></span></li>
+    </ul>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.menu-product li.child .open-close').on('click', function () {
+                $(this).removeAttr('href');
+                var element = $(this).parent('li');
+                if (element.hasClass('open')) {
+                    element.removeClass('open');
+                    element.children('ul').slideUp();
+                }
+                else {
+                    element.addClass('open');
+                    element.children('ul').slideDown();
+                }
+            });
+        });
+    </script>
+}

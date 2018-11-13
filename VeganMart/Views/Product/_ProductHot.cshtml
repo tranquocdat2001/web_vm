@@ -1,0 +1,39 @@
+﻿
+@using Utilities
+@using PublicModel
+@model ProductModelBox
+
+@if (Model != null && Model.ProductList != null && Model.ProductList.Count > 0)
+{
+
+    <div class="box-product widget_block_sidebar">
+        <div class="title_product_related widget_title_sidebar">
+            <h3>
+                Sản phẩm Hot
+            </h3>
+        </div>
+        <ul class="list_product_related widget_list_sidebar clearfix">
+            @foreach (var item in Model.ProductList)
+            {
+                <li class="pro-loop clearfix">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        <a href="@item.URL" title="@item.Name">
+                            <img class="first-img" src="@item.GetAvatar(Const.Size350x350)" alt="@item.Name" />
+                        </a>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <a href="@item.URL" title="@item.Name">
+                            <h3 class="product_related_name">
+                                @item.Name
+                            </h3>
+                            <p class="product_related_price">
+                                <span class="product_related_price">@Html.Raw(item.PriceFormat)</span>
+                                @*<span class="product_related_old_price">150.000&nbsp;₫</span>*@
+                            </p>
+                        </a>
+                    </div>
+                </li>
+            }            
+        </ul>
+    </div>
+}

@@ -1,0 +1,308 @@
+﻿using Business.CreditCard;
+using Business.News;
+using Core;
+using Core.Enums;
+using Utilities;
+using Utilities.XmlSiteMap;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+
+namespace Website.Controllers
+{
+    public class SiteMapController : Controller
+    {
+        private INewsBoFE _newsBo;
+
+        private ICreditCardBoFE _creditCardBo;
+
+        #region Constructors
+
+        public SiteMapController(INewsBoFE newsBo, ICreditCardBoFE creditCardBo)
+        {
+            _newsBo = newsBo;
+            _creditCardBo = creditCardBo;
+        }
+
+        #endregion
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult GenSitemap()
+        {
+            string metaTags = CoreUtils.AddMeta(new Dictionary<string, string>() {
+                { "name", "ROBOTS" },
+                { "content", "NOINDEX, NOFOLLOW" },
+            });
+
+            ViewBag.Meta = metaTags;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GenarateSitemap(string password, string date = "")
+        {
+            ResponseData responseData = new ResponseData();
+
+            string passwordConfig = AppSettings.Instance.GetString("PassSitemap");
+            if (string.IsNullOrEmpty(password) || !passwordConfig.Equals(password))
+            {
+                responseData.Message = "Invalid password";
+                return Json(responseData);
+            }
+
+            string sitemapName = "sitemap.xml";
+            string sitemapSettingsName = "sitemap-settings.xml";
+
+            string baseUrl = AppSettings.Instance.GetString(Const.BaseUrlNoSlash);
+
+            string xmlPath = AppSettings.Instance.GetString(Const.SiteMapPath, "~/SiteMapFiles/");
+            string uriSitemapPath = string.Concat(baseUrl, "/SiteMapFiles/");
+
+            string xmlSiteMapSettingsPath = Server.MapPath(string.Concat(xmlPath, sitemapSettingsName));
+
+            string xmlSiteMapPath = Server.MapPath(string.Concat("~/", sitemapName));
+            string uriSitemap = string.Concat(baseUrl, sitemapName);
+
+
+            DateTime currentDate = DateTime.Now;
+
+            if(!string.IsNullOrEmpty(date))
+            {
+                try
+                {
+                    currentDate = Utils.ConvertStringToDateTime(date, "yyyy-MM-dd");
+                }
+                catch { }
+            }
+
+            DateTime yesterday = currentDate.AddDays(-1);
+            int top = 30;
+
+
+            SiteMapSettings settings = new SiteMapSettings();
+
+            try
+            {
+
+                #region #1 Check Settings
+
+                /*
+
+                settings = SiteMapHelper.GetXmlContentFromPath<SiteMapSettings>(xmlSiteMapSettingsPath);
+
+                if (settings != null && settings.LastModifiedDate.HasValue && Utils.DateDiff((DateTime)settings.LastModifiedDate, currentDate, "d") > 0)
+                {
+                    responseData.Message = "Invalid date";
+                    return Json(responseData);
+                }
+
+                */
+
+                #endregion
+
+                #region #2 GetLinks
+
+                // get top news
+
+                string nameSitemapNewsToday = string.Format("sitemap-news-{0:dd-MM-yyyy-HH}.xml", currentDate);
+                string pathSitemapNewsToday = Server.MapPath(string.Concat(xmlPath, nameSitemapNewsToday));
+                string uriSitemapNewsToday = string.Concat(uriSitemapPath, nameSitemapNewsToday);
+
+                Sitemap sitemapNews = SiteMapHelper.GetXmlContentFromPath<Sitemap>(pathSitemapNewsToday);
+
+                if (sitemapNews == null)
+                {
+                    sitemapNews = new Sitemap();
+
+                    IEnumerable<Entities.News> newsList = _newsBo.GetTopByDate(top, yesterday);
+
+                    if (newsList != null && newsList.Any())
+                    {
+                        foreach (Entities.News news in newsList)
+                        {
+                            if (string.IsNullOrEmpty(news.Url)) news.Url = Utils.UnicodeToUnsignCharAndDash(news.Title);
+                            news.Url = CoreUtils.BuildURLForNews(news.Title, news.OriginalUrl, news.Id);
+                            news.Url = string.Concat(baseUrl, news.Url);
+                            sitemapNews.Add(new Location()
+                            {
+                                Url = news.Url,
+                                LastModified = news.DistributionDate,
+                                ChangeFrequency = Location.eChangeFrequency.daily,
+                                Priority = 1
+                            });
+                        }
+
+
+                        SiteMapHelper.SetXmlContentToPath(pathSitemapNewsToday, sitemapNews);
+                    }
+                }
+
+                // get top cards
+
+                string nameSitemapCardToday = string.Format("sitemap-card-{0:dd-MM-yyyy-HH}.xml", currentDate);
+                string pathSitemapCardToday = Server.MapPath(string.Concat(xmlPath, nameSitemapCardToday));
+                string uriSitemapCardToday = string.Concat(uriSitemapPath, nameSitemapCardToday);
+
+                Sitemap sitemapCard = SiteMapHelper.GetXmlContentFromPath<Sitemap>(pathSitemapCardToday);
+
+                if (sitemapCard == null)
+                {
+                    sitemapCard = new Sitemap();
+
+                    IEnumerable<Entities.CreditCard> cardList = _creditCardBo.GetTopByDate(top, yesterday);
+                    if (cardList != null && cardList.Any())
+                    {
+                        foreach (Entities.CreditCard card in cardList)
+                        {
+                            if (string.IsNullOrEmpty(card.Url)) card.Url = Utils.UnicodeToUnsignCharAndDash(card.Name);
+                            card.Url = CoreUtils.BuildURL(ConstUrl.CreditCardDetail, new object[] { card.Url, card.Id });
+                            card.Url = string.Concat(baseUrl, card.Url);
+                            sitemapCard.Add(new Location()
+                            {
+                                Url = card.Url,
+                                LastModified = card.ModifiedDate,
+                                ChangeFrequency = Location.eChangeFrequency.daily,
+                                Priority = 1
+                            });
+                        }
+
+                        SiteMapHelper.SetXmlContentToPath(pathSitemapCardToday, sitemapCard);
+                    }
+                }
+
+                #endregion
+
+                #region #3 GenSiteMap
+
+                Sitemap sitemap = SiteMapHelper.GetXmlContentFromPath<Sitemap>(xmlSiteMapPath);
+
+                if (sitemap == null)
+                {
+                    sitemap = new Sitemap();
+
+                    #region sitemap common
+
+                    string nameSitemapCommonToday = "sitemap-common.xml";
+                    string pathSitemapCommonToday = Server.MapPath(string.Concat(xmlPath, nameSitemapCommonToday));
+                    string uriSitemapCommonToday = string.Concat(uriSitemapPath, nameSitemapCommonToday);
+
+                    Sitemap sitemapCommon = new Sitemap();
+
+                    sitemapCommon.Add(new Location()
+                    {
+                        Url = baseUrl,
+                        ChangeFrequency = Location.eChangeFrequency.always,
+                        Priority = 1
+                    });
+                    sitemapCommon.Add(new Location()
+                    {
+                        Url = string.Concat(baseUrl, CoreUtils.BuildURL(ConstUrl.NewsUrl)),
+                        Priority = 1,
+                        ChangeFrequency = Location.eChangeFrequency.always
+                    });
+                    sitemapCommon.Add(new Location()
+                    {
+                        Url = string.Concat(baseUrl, CoreUtils.BuildURL(ConstUrl.FaqUrl)),
+                        Priority = 1,
+                        ChangeFrequency = Location.eChangeFrequency.always
+                    });
+                    sitemapCommon.Add(new Location()
+                    {
+                        Url = string.Concat(baseUrl, CoreUtils.BuildURL(ConstUrl.CreditCardList)),
+                        Priority = 1,
+                        ChangeFrequency = Location.eChangeFrequency.always
+                    });
+                    sitemapCommon.Add(new Location()
+                    {
+                        Url = string.Concat(baseUrl, CoreUtils.BuildURL(ConstUrl.CreditCardFreeAnnualList)),
+                        Priority = 1,
+                        ChangeFrequency = Location.eChangeFrequency.always
+                    });
+                    sitemapCommon.Add(new Location()
+                    {
+                        Url = string.Concat(baseUrl, CoreUtils.BuildURL(ConstUrl.CreditCardRefundAwardList)),
+                        Priority = 1,
+                        ChangeFrequency = Location.eChangeFrequency.always
+                    });
+                    sitemapCommon.Add(new Location()
+                    {
+                        Url = string.Concat(baseUrl, CoreUtils.BuildURL(ConstUrl.CreditCardSaveMileList)),
+                        Priority = 1,
+                        ChangeFrequency = Location.eChangeFrequency.always
+                    });
+                    sitemapCommon.Add(new Location()
+                    {
+                        Url = string.Concat(baseUrl, CoreUtils.BuildURL(ConstUrl.CreditCardShoppingList)),
+                        Priority = 1,
+                        ChangeFrequency = Location.eChangeFrequency.always
+                    });
+                    sitemapCommon.Add(new Location()
+                    {
+                        Url = string.Concat(baseUrl, CoreUtils.BuildURL(ConstUrl.CreditCardUsingAbroadList)),
+                        Priority = 1,
+                        ChangeFrequency = Location.eChangeFrequency.always
+                    });
+
+                    SiteMapHelper.SetXmlContentToPath(pathSitemapCommonToday, sitemapCommon);
+
+                    #endregion
+
+                    sitemap.Add(new Location()
+                    {
+                        Url = uriSitemapCommonToday,
+                        ChangeFrequency = Location.eChangeFrequency.always,
+                        Priority = 1
+                    });
+                }
+
+                if (sitemapNews != null && sitemapNews.Length > 0)
+                {
+                    sitemap.Add(new Location()
+                    {
+                        Url = uriSitemapNewsToday,
+                        LastModified = currentDate,
+                        Priority = 1
+                    });
+                }
+
+                if (sitemapCard != null && sitemapCard.Length > 0)
+                {
+                    sitemap.Add(new Location()
+                    {
+                        Url = uriSitemapCardToday,
+                        LastModified = currentDate,
+                        Priority = 1
+                    });
+                }
+
+                SiteMapHelper.SetXmlContentToPath(xmlSiteMapPath, sitemap);
+
+                settings = new SiteMapSettings()
+                {
+                    LastModifiedDate = DateTime.Now
+                };
+
+                SiteMapHelper.SetXmlContentToPath(xmlSiteMapSettingsPath, settings);
+
+                #endregion
+
+                responseData.Success = true;
+                responseData.Message = "Tạo sitemap thành công";
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(Logger.LogType.Error, ex.ToString());
+                responseData.Message = ex.ToString();
+            }
+
+            return Json(responseData);
+        }
+
+    }
+}

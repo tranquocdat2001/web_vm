@@ -1,0 +1,111 @@
+﻿
+<div class="col-md-3">
+    @Html.Partial("~/Views/Account/_MenuAccount.cshtml")
+</div>
+
+<div class="col-md-9">
+
+    @Html.Action("Breadcrumb", "Category", new { cateName = "Đăng ký tài khoản" })
+
+    <div class="register-content clearfix">
+        <h1 class="title"><span>Đăng ký tài khoản</span></h1>
+        <!-- ngIf: IsError -->
+        <div class="alert alert-danger fade in">
+            <button data-dismiss="alert" class="close"></button>
+            <i class="fa-fw fa fa-times"></i>
+            <strong>Error!</strong>
+            <span class="ng-binding">An error occurred while updating the entries. See the inner exception for details.<br></span>
+        </div>
+        <!-- ngIf: IsSuccess -->
+        <div class="alert alert-success fade in">
+            <button data-dismiss="alert" class="close"></button>
+            <i class="fa-fw fa fa-check"></i>
+            <strong>Success!</strong> Cập nhật thành công.
+        </div>
+        <!-- ngIf: InValid -->
+        <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
+            <form class="form-horizontal" ng-submit="register()">
+                <h2><span>Thông tin tài khoản</span></h2>
+                <div class="form-group">
+                    <label for="Code" class="col-sm-3 control-label">Tài khoản<span class="warning">(*)</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="Code" required="true" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Email" class="col-sm-3 control-label">Email<span class="warning">(*)</span></label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" ng-model="Email" required="true" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Password" class="col-sm-3 control-label">Mật khẩu<span class="warning">(*)</span></label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" ng-model="Password" required="true" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="RePassword" class="col-sm-3 control-label">Nhập lại mật khẩu<span class="warning">(*)</span></label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" ng-model="RePassword" />
+                    </div>
+                </div>
+                <h2>Thông tin cá nhân</h2>
+                <div class="form-group">
+                    <label for="Name" class="col-sm-3 control-label">Họ tên<span class="warning">(*)</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="Name" required="true" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Giới tính</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="GenderId"
+                                ng-options="item.Id as item.Name for item in Genders"></select>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-sm-3 control-label">Ngày sinh</label>
+                    <div class="col-sm-9">
+                        <select class="col-md-4 form-control" ng-model="SelectedDay" ng-options="label for label in Days | limitTo:NumberOfDays" placeholder="Ngày"></select>
+                        <select class="col-md-4 form-control" ng-model="SelectedMonth" ng-options="label for label in Months" ng-change="UpdateNumberOfDays()" placeholder="Tháng"></select>
+                        <select class="col-md-4 form-control" ng-model="SelectedYear" ng-options="label for label in Years" ng-change="UpdateNumberOfDays()" placeholder="Năm"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Điện thoại</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="Phone" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Địa chỉ</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" ng-model="Address" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Tỉnh/TP</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="ProvinceId"
+                                ng-options="item.Id as item.Name for item in Provinces" ng-change="getDistricts(ProvinceId)"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Quận/Huyện</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="DistrictId"
+                                ng-options="item.Id as item.Name for item in Districts"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <button type="submit" class="btn btn-primary">Đăng ký</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿<bundle name="12345">
+
+  <styles>
+    
+    <style name="~/WIS/WebApp">
+      <items>
+        <item>
+          <path>~/Content/Css/style.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Content/Css/app.css</path>
+        </item>
+      </items>
+    </style>
+    
+    <style name="~/WIS/WebCommon">
+      <items>
+        <item>
+          <path>~/Content/Css/jquery.min.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Content/Css/jquery.ui.min.css</path>
+        </item>
+      </items>
+    </style>
+
+    <style name="~/WIS/Mobile">
+      <items>
+        <item>
+          <path>~/Content/Css/Wap/style.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Content/Css/Wap/app.css</path>
+        </item>
+      </items>
+    </style>
+
+  </styles>
+
+  <scripts>
+    
+    <script name="~/WIS/Scripts">
+      <items>
+        <item>
+          <path>~/Content/Js/main.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Content/Js/app.js</path>
+          <css_fix_rewrite_url>false</css_fix_rewrite_url>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/ScriptsForMobile">
+      <items>
+        <item>
+          <path>~/Content/JsMobile/main.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Content/JsMobile/app.js</path>
+          <css_fix_rewrite_url>false</css_fix_rewrite_url>
+        </item>
+      </items>
+    </script>
+    
+  </scripts>
+
+</bundle>

@@ -1,0 +1,58 @@
+﻿
+@using Utilities
+@using PublicModel
+@model ArticleModelDetail
+
+<div id="article">
+
+    <div class="col-md-9">
+
+        @*@Html.Action("Breadcrumb", "Category", new { cateId = Model.SearchInfo.CateId })*@
+        @Html.Action("Breadcrumb", "Category", new { cateName = "Tin tức" })
+
+        <div class="news-detail articles_page clearfix">
+            @if (Model != null)
+            {
+                <h1 class="page-heading">@Model.Title</h1>
+                <div class="content-page">
+                    <p class="createdat_article">
+                        Ngày: @Model.PublishedDate
+                    </p>
+                    <div class="content_article rte clearfix">
+                        @Html.Raw(Model.NewsContent)
+                    </div>
+                    <div class="author_article text-right"></div>
+                    <div class="socials_article clearfix">
+                        <!-- AddThis Button BEGIN -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook_like" fb:like:layout="button_count"><div class="fb-like fb_iframe_widget" data-layout="button_count" data-show_faces="false" data-share="true" data-action="like" data-width="90" data-height="25" data-font="arial" data-href="" data-send="false" style="height: 25px;" fb-xfbml-state="parsed"></div><div class="fb-like fb_iframe_widget" style="height: 25px;" fb-xfbml-state="parsed"></div></a>
+
+
+                            <a class="addthis_button_google_plusone at300b" g:plusone:size="medium"><div class="google_plusone_iframe_widget" style="width: 90px; height: 25px;"><span><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1541236492841" name="I0_1541236492841" src="" data-gapiattached="true" title="G+"></iframe></div></span></div></a>
+                            <a class="addthis_counter addthis_pill_style " href="#" style="display: inline-block;"><a class="atc_s addthis_button_compact">Chia sẻ<span></span></a><a class="addthis_button_expanded" target="_blank" title="Thêm..." href="#"></a></a>
+                            <div class="atclear"></div>
+                        </div>
+                        <script type="text/javascript" src="/scripts/addthis/addthis_widget.js#pubid=ra-5334d6387b03b532"></script>
+                        <!-- AddThis Button END -->
+                    </div>
+                    <div class="tag_article clearfix">
+                        <label>Từ khóa:</label>
+                        <ul class="clearfix">
+                            <li class="item">
+                                <a href="#" title="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    @Html.Action("ArticleOther", "Article", new { cateId = Model.CateId, top = 5 })
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        @Html.Partial("~/Views/Article/_ArticleMenu.cshtml")
+        @Html.Action("ArticleTop", "Article", new { cateId = 1, top = 5 })
+    </div>
+
+</div>

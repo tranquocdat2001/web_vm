@@ -1,0 +1,76 @@
+﻿
+@using PublicModel
+@model ProductModelBox
+@{
+    int itemIndex = 1;
+}
+
+@if (Model != null && Model.ProductList != null && Model.ProductList.Count > 0)
+{
+    <div class="product_home">
+        <div class="product_home_image">
+            <a href="/san-pham/tom-33806">
+                <img src="~/Content/demo/slide1.jpg" alt="Tôm" />
+                <div class="figcaption"></div>
+            </a>
+        </div>
+
+        <div class="section-heading clearfix">
+            <h2>
+                <span>@Model.TitleBox</span>
+            </h2>
+        </div>
+
+        <div class="product_list grid clearfix">
+            @foreach (var item in Model.ProductList)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow @((itemIndex - 1) % 4 == 0 ? "clear" : "")">
+                    @Html.Partial("_Item", item)
+                </div>
+                itemIndex++;
+
+                @*<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow">
+                        <div class="product-block product-resize">
+                            <div class="product-image image-resize">
+                                @if (item.SaleOffPrice > 0)
+                                {
+                                    <div class="product-sale">
+                                        <span class="sale-lb">-@item.SaleOffPrice%</span>
+                                    </div>
+                                }
+                                @if (item.Discount > 0)
+                                {
+                                    <div class="sold-out">Hot</div>
+                                }
+                                <a href="@item.URL" title="@item.Name">
+                                    <img class="first-img" src="@item.GetAvatar(Const.Size350x350)" alt="@item.Name" />
+                                </a>
+                                <div class="product-actions hidden-xs">
+                                    <div class="btn-add-to-cart" onclick="AddToCard(@item.ProductId,1)">
+                                        <a href="javascript:void(0);"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                                    </div>
+                                    <div class="btn_quickview">
+                                        <a class="quickview" href="@item.URL"><i class="fa fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info text-center m-t-xxs-20">
+                                <h3 class="pro-name">
+                                    <a href="@item.URL" title="@item.Name">
+                                        @item.Name
+                                    </a>
+                                </h3>
+                                <div class="pro-prices">
+                                    <span class="pro-price">@item.PriceFormat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+            }
+        </div>
+
+        <div class="show_more">
+            Mời bạn <a href="@Model.UrlBox">Xem thêm các sản phẩm @Model.TitleBox</a> khác
+        </div>
+    </div>
+}

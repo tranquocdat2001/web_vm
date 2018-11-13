@@ -1,0 +1,41 @@
+﻿
+@using Entity;
+@model List<CategoryEntity>
+
+<nav class="navbar-main">
+    <div id="mb_mainnav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12 col-xs-12 vertical_menu">
+                    <div id="mb_verticle_menu" class="menu-quick-select @(Request.RawUrl=="/"?"home_menu":"")">
+                        <div class="title_block">
+                            <span>Danh mục sản phẩm</span>
+                        </div>
+                        <div id="menuverti" class="block_content navbar_menuvertical">
+                            @if (Model != null && Model.Count > 0)
+                            {
+                                <ul class="nav_verticalmenu">
+                                    @foreach (var item in Model)
+                                    {
+                                        <li class="level0">
+                                            <a class="" href="/@item.DisplayUrl" title="@item.Name"> <span>@item.Name</span></a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <nav class="col-md-9 col-sm-12 col-xs-12 p-l-0">
+                    <ul class="menu nav navbar-nav menu_hori">
+                        <li class="level0"><a class="" href="/"><span>Trang chủ</span></a></li>
+                        <li class="level0"><a class="" href="/gioi-thieu"><span>Giới thiệu</span></a></li>
+                        <li class="level0"><a class="" href="/san-pham"><span>Sản phẩm</span></a></li>
+                        <li class="level0"><a class="" href="/tin-tuc"><span>Tin tức</span></a></li>
+                        <li class="level0"><a class="" href="/lien-he"><span>Liên hệ</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,41 @@
+﻿
+@using PublicModel
+@model ArticleModelBox
+
+@if (Model != null && Model.ArticleList != null && Model.ArticleList.Count > 0)
+{
+    <div class="sidebar_blogs">
+        <h3 title="bài viết mới" class="sidebar_title">
+            Bài viết nổi bật
+        </h3>
+        <div class="blog_content">
+            @foreach (var item in Model.ArticleList)
+            {
+                <div class="article_item">
+                    <div class="article_img">
+                        <a href="@item.URL" title="@item.Title">
+                            <img class="first-img" src="@item.GetAvatar(Const.Size350x350)" alt="@item.Title" />
+                        </a>
+                    </div>
+                    <div class="article_content clearfix">
+                        <div class="title">
+                            <h4><a href="@item.URL" title="@item.Title">@item.Title</a></h4>
+                        </div>
+                        <div class="article_meta">
+                            <div class="article_comment">
+                                <i class="fa fa-comments-o" aria-hidden="true"></i> 0 bình luận
+                            </div>
+                            <div class="article_created">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> <time datetime="@item.PublishedDate">@item.PublishedDate</time>
+                            </div>
+                        </div>
+                        <div class="des">
+                            <p>@item.Description</p>
+                        </div>
+                        <a class="readmore" href="@item.URL">Đọc tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

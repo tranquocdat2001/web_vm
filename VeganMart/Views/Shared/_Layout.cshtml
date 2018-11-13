@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Html.Raw(!string.IsNullOrEmpty(ViewBag.MetaTitle) ? ViewBag.MetaTitle : Const.DomainTitle)</title>
+    <meta charset="utf-8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta property="fb:app_id" content="227481454296289" />
+
+    @if (!string.IsNullOrEmpty(ViewBag.MetaFacebook))
+    {
+        @Html.Raw(ViewBag.MetaFacebook)
+    }
+    else
+    {
+        <meta property="og:site_name" content="@Const.Domain" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="@(ViewBag.OriginUrl != null ? ViewBag.OriginUrl : Const.BaseUrlNoSlash + Request.RawUrl)" />
+        <meta property="og:image" content="@Const.BaseUrlNoSlash/Content/images/logo.png" />
+        <meta property="og:image:type" content="image/jpg" />
+        <meta property="og:image:width" content="620" />
+        <meta property="og:image:height" content="324" />
+    }
+    @Html.Raw(ViewBag.Meta)
+    @Html.Raw(ViewBag.MetaPagination)
+
+    <link rel="shortcut icon" href="@Const.BaseUrlNoSlash/favicon.ico" type="image/x-icon" />
+    <link href="~/Content/fonts/fonts-master/roboto.css" rel="stylesheet" />
+    <link href="~/Content/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Scripts/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    @*<link rel='stylesheet' href='https://cdn.rawgit.com/daneden/animate.css/v3.1.0/animate.min.css'>*@
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Fix.css" rel="stylesheet" />
+
+    @RenderSection("style", required: false)
+    @Html.Partial("~/Views/SocialAndStatistics/_FacebookModerators.cshtml")
+    @Html.Partial("~/Views/SocialAndStatistics/_GoogleAnalyticsEmbed.cshtml")
+</head>
+<body>
+
+    @Html.Partial("~/Views/SocialAndStatistics/_FacebookEmbed.cshtml")
+
+
+    <div class="loader_overlay"></div>
+    <div id="opacity" class=""></div>
+
+    <div class="wrapper">
+
+        @Html.Partial("_Header")
+
+        @Html.Action("MenuTop", "Category")
+
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial("_Footer")
+
+    </div>
+
+    <script src="~/Scripts/plugin.js"></script>
+    @*<script src="~/Scripts/jquery-1.12.4.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/lazyLoad/jquery.lazyload.min.js"></script>
+        <script src='https://cdn.rawgit.com/matthieua/WOW/1.0.1/dist/wow.min.js'></script>*@
+
+    <script src="~/Scripts/cookie.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Script.js"></script>
+
+    <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>
+</body>
+</html>

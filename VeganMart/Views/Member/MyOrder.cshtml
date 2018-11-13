@@ -1,0 +1,39 @@
+﻿
+<div class="col-md-3">
+    @Html.Partial("~/Views/Member/_MenuMember.cshtml")
+</div>
+
+<div class="col-md-9">
+
+    @Html.Action("Breadcrumb", "Category", new { cateName = "Đơn hàng của tôi" })
+
+    <div class="myorder-content clearfix">
+        <h1 class="title"><span>Đơn hàng của tôi</span></h1>
+        <div class="myorder-block">
+            <div class="table-responsive clearfix myorder-info">
+                <table class="table table-mycart">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã đơn hàng</th>
+                            <th>Tên khách hàng</th>
+                            <th>Tổng tiền</th>
+                            <th>Vận chuyển</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="/don-hang/16205">#100000031</a></td>
+                            <td><a href="#">Kim Mỹ</a></td>
+                            <td>930.000đ</td>
+                            <td>Chưa</td>
+                            <td class="text-center"><a href="/don-hang/16205"><i class="fa fa-angle-double-right "></i>Xem đơn hàng</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

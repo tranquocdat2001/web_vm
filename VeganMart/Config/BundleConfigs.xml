@@ -1,0 +1,374 @@
+﻿<bundle name="12345">
+
+  <styles>
+
+    <style name="~/WIS/webstyles">
+      <items>
+        <item>
+          <path>~/Content/Web/css/reset.css</path>
+        </item>
+        <item>
+          <path>~/Content/Web/css/fontello.css</path>
+        </item>
+        <item>
+          <path>~/Content/Web/css/define.css</path>
+        </item>
+        <!--<item>
+          <path>~/Scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>-->
+        <item>
+          <path>~/Scripts/chosen_v1.8.2/chosen.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Scripts/Swiper-2.7.6/idangerous.swiper.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        
+        <!--<item>
+          <path>~/Scripts/lightgallery.custom/lightGallery.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>-->
+        
+        <item>
+          <path>~/Content/Web/css/style.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Content/Web/css/custom.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+      </items>
+    </style>
+
+    <style name="~/WIS/lightgallerycss">
+      <items>
+        <item>
+          <path>~/Scripts/lightgallery/css/lightgallery.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+      </items>
+    </style>
+
+    <style name="~/WIS/styles/slide">
+      <items>
+        <item>
+          <path>~/Scripts/SlideGallery/amazingslider-1.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+      </items>
+    </style>
+
+    <style name="~/WIS/wapstyles">
+      <items>
+        <item>
+          <path>~/Content/Wap/css/reset.css</path>
+        </item>
+        <item>
+          <path>~/Content/Wap/css/fontello.css</path>
+        </item>
+        <item>
+          <path>~/Content/Wap/css/define.css</path>
+        </item>
+        <item>
+          <path>~/Scripts/Swiper-2.7.6/idangerous.swiper.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Content/Wap/css/style.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Content/Wap/css/fix.css</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+                
+      </items>
+    </style>
+
+  </styles>
+
+  <scripts>
+
+    <script name="~/WIS/commonscripts">
+      <items>
+        <item>
+          <path>~/Scripts/jquery-1.12.4.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/cookie.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/gototop/easing.js</path>
+          <css_fix_rewrite_url>false</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Scripts/gototop/jquery.ui.totop.js</path>
+          <css_fix_rewrite_url>false</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Scripts/Swiper-2.7.6/idangerous.swiper.min.js</path>
+        </item>
+        <!--<item>
+          <path>~/Scripts/jquery.validate.min.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/jquery.validate.unobtrusive.min.js</path>
+        </item>-->
+        <item>
+          <path>~/Scripts/common.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Scripts/Web/defines.js</path>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/scriptsweb">
+      <items>
+        <!--<item>
+          <path>~/Scripts/Web/jquery.nicescroll.js</path>
+        </item>-->
+        <item>
+          <path>~/Scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/chosen_v1.8.2/chosen.jquery.min.js</path>
+        </item>
+        <!--<item>
+          <path>~/Scripts/lightgallery.custom/lightGallery.js</path>
+        </item>-->
+        <item>
+          <path>~/Scripts/jquery.nicescroll-3.7.6/jquery.nicescroll.min.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/Web/news.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Scripts/Web/web.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Scripts/Web/SearchCarCompare.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+      </items>
+    </script>
+
+
+    <script name="~/WIS/lightgalleryscript">
+      <items>
+        <item>
+          <path>~/Scripts/lightgallery/js/lightgallery.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/lightgallery/js/lg-fullscreen.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/lightgallery/js/lg-thumbnail.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/lightgallery/js/lg-zoom.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/lightgallery/js/jquery.mousewheel.js</path>
+        </item>
+      </items>
+    </script>
+    
+    <script name="~/WIS/scripts/slideScripts">
+      <items>
+        <item>
+          <path>~/Scripts/SlideGallery/amazingslider.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/SlideGallery/initslider-1.js</path>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/scripts/playerScripts">
+      <items>
+        <item>
+          <path>~/Plugins/jwplayer/8.4.4/jwplayer.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Plugins/jwplayer/8.4.4/playerConfig.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/scripts/newsDetail">
+      <items>
+        <item>
+          <path>~/Scripts/Web/newsDetail.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/scripts/assessmentDetail">
+      <items>
+        <item>
+          <path>~/Scripts/Web/assessmentDetail.js</path>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/scripts/videoDetailScripts">
+      <items>
+        <item>
+          <path>~/Scripts/Web/VideoDetails.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+
+      </items>
+    </script>
+    <script name="~/WIS/scripts/videoDetailWapScripts">
+      <items>
+        <item>
+          <path>~/Scripts/Wap/videoDetails.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+
+      </items>
+    </script>
+    <script name="~/WIS/scripts/imageDetailScripts">
+      <items>
+        <item>
+          <path>~/Scripts/Web/ImageDetails.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+
+      </items>
+    </script>
+    <script name="~/WIS/scripts/imageDetailMobileScripts">
+      <items>
+        <item>
+          <path>~/Scripts/Wap/imagedetails.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+
+      </items>
+    </script>
+
+    <script name="~/WIS/scripts/carInfoScripts">
+      <items>
+        <item>
+          <path>~/Scripts/Web/carinfo.js</path>
+        </item>
+      </items>
+    </script>
+    <script name="~/WIS/scripts/carInfoDetailsScripts">
+      <items>
+        <item>
+          <path>~/Scripts/Web/carinfodetails.js</path>
+        </item>
+      </items>
+    </script>
+    <script name="~/WIS/scripts/carInfoDetailsScriptsSlide">
+      <items>
+        <item>
+          <path>~/Scripts/Web/carinfodetailsSlide.js</path>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/scripts/searchCarPrice">
+      <items>
+        <item>
+          <path>~/Scripts/Web/searchcarprice.js</path>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/scripts/searchBikePrice">
+      <items>
+        <item>
+          <path>~/Scripts/Web/searchbikeprice.js</path>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/Wap/scripts/searchCarPrice">
+      <items>
+        <item>
+          <path>~/Scripts/Wap/searchcarpricewap.js</path>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/Wap/scripts/searchBikePrice">
+      <items>
+        <item>
+          <path>~/Scripts/Wap/searchbikepricewap.js</path>
+        </item>
+      </items>
+    </script>
+    
+    <script name="~/WIS/scriptswap">
+      <items>
+        <item>
+          <path>~/Scripts/Wap/mobile.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Scripts/Wap/search.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+        <item>
+          <path>~/Scripts/jquery.imageslider.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+       
+      </items>
+    </script>
+
+    <script name="~/WIS/Scripts/Wap/news">
+      <items>
+        <item>
+          <path>~/Scripts/Wap/news.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+      </items>
+    </script>
+    <script name="~/WIS/Scripts/Wap/CarInfoDetail">
+      <items>
+        <item>
+          <path>~/Scripts/Wap/carinfodetail.js</path>
+          <css_fix_rewrite_url>true</css_fix_rewrite_url>
+        </item>
+      </items>
+    </script>
+
+    <script name="~/WIS/scripts/assessmentDetailWap">
+      <items>
+        <item>
+          <path>~/Scripts/Wap/assessmentDetail.js</path>
+        </item>
+      </items>
+    </script>
+
+
+    <script name="~/WIS/wap/lightgalleryscript">
+      <items>
+        <item>
+          <path>~/Scripts/lightgallery/js/lightgallery.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/lightgallery/js/lg-thumbnail.js</path>
+        </item>
+        <item>
+          <path>~/Scripts/lightgallery/js/lg-zoom.js</path>
+        </item>
+      </items>
+    </script>
+
+  </scripts>
+
+</bundle>
