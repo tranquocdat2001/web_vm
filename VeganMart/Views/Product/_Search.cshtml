@@ -1,0 +1,14 @@
+﻿
+@model string
+
+@using (Html.BeginForm("SearchPost", "Product", FormMethod.Post, new { id = "frm_Search" }))
+{
+    <!-- Search -->
+    <div class="search_box">
+        <div class="search_wrapper">
+            <input type="text" name="textSearch" class="index_input_search" id="txtsearch" onblur="if(this.value=='')this.value='Nhập từ khóa tìm kiếm...'" onfocus="if(this.value=='Nhập từ khóa tìm kiếm...')this.value=''" value="@Model">
+            <input class="btn_search_submit btn " type="submit" id="btnsearch" value="Tìm ngay"/>
+        </div>
+    </div>
+    <!-- End Search -->
+}

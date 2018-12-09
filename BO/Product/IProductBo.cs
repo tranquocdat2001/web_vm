@@ -13,5 +13,7 @@ namespace BO.ProductBo
 
         ProductModelDetail GetByProductId(int productId);
         ProductModelDetail GetByProductIdNoCache(int productId);
+        int CallMe_Insert(CallMeModel model);
+        int ReceiveEmail_Insert(EmailModel model);
     }
 }

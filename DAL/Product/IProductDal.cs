@@ -12,5 +12,7 @@ namespace DAL.ProductDal
         int GetListCount(SearchProduct search);
 
         ProductEntity GetByProductId(int productId);
+        int CallMe_Insert(CallMeModel model);
+        int ReceiveEmail_Insert(EmailModel model);
     }
 }

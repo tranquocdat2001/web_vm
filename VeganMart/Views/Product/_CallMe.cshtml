@@ -1,0 +1,24 @@
+﻿@model CallMeModel
+
+@using (Html.BeginForm("CallMe", "Product", FormMethod.Post, new { id = "frm_CallMe" }))
+{
+    @Html.AntiForgeryToken()
+    @*@Html.ValidationSummary(true)*@
+    <div class="call">
+        <p class="title">Để lại số điện thoại, chúng tôi sẽ tư vấn ngay sau từ 5 › 10 phút</p>
+        <div class="input">
+            <div class="input-group">
+                @Html.HiddenFor(m => m.ProductId)
+                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control numberOnly", placeholder = "Nhập số điện thoại..." })
+                @*<input id="txtPhone" name="Phone" class="form-control" onblur="if(this.value=='')this.value='Nhập số điện thoại...'" onfocus="if(this.value=='Nhập số điện thoại...')this.value=''" value="Nhập số điện thoại..." type="text">*@
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-phone"></i> Gọi lại cho tôi</button>
+                </span>
+            </div>
+            <div class="input-group m-t-5">
+                @Html.ValidationMessageFor(m => m.Phone)
+                <div id="lblMessage"></div>
+            </div>
+        </div>
+    </div>
+}

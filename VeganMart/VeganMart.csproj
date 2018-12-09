@@ -98,7 +98,13 @@
     <Content Include="Content\fonts\fonts-master\roboto.css" />
     <Content Include="Content\images\bg_checked.png" />
     <Content Include="Content\images\cart.png" />
+    <Content Include="Content\images\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\images\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\images\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\images\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\images\fancybox\fancybox_sprite.png" />
     <Content Include="Content\images\icon-link-more.jpg" />
+    <Content Include="Content\images\icon.png" />
     <Content Include="Content\images\icon_1.png" />
     <Content Include="Content\images\icon_2.png" />
     <Content Include="Content\images\icon_3.png" />
@@ -138,6 +144,15 @@
     <Content Include="Content\fonts\fonts-master\roboto-light.ttf" />
     <Content Include="Content\fonts\fonts-master\roboto-medium.ttf" />
     <Content Include="Content\fonts\fonts-master\roboto-regular.ttf" />
+    <Content Include="Scripts\fancybox2.1.5\blank.gif" />
+    <Content Include="Scripts\fancybox2.1.5\fancybox_loading%402x.gif" />
+    <Content Include="Scripts\fancybox2.1.5\fancybox_loading.gif" />
+    <Content Include="Scripts\fancybox2.1.5\fancybox_overlay.png" />
+    <Content Include="Scripts\fancybox2.1.5\fancybox_sprite%402x.png" />
+    <Content Include="Scripts\fancybox2.1.5\fancybox_sprite.png" />
+    <Content Include="Scripts\fancybox2.1.5\jquery.fancybox.css" />
+    <Content Include="Scripts\fancybox2.1.5\jquery.fancybox.js" />
+    <Content Include="Scripts\fancybox2.1.5\jquery.fancybox.pack.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -175,6 +190,7 @@
     <Content Include="Scripts\Script.js" />
     <Content Include="Scripts\Swiper-2.7.6\idangerous.swiper.css" />
     <Content Include="Scripts\Swiper-2.7.6\idangerous.swiper.min.js" />
+    <Content Include="upgrade.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -249,6 +265,10 @@
     <Content Include="Views\Category\_Breadcrumb.cshtml" />
     <Content Include="Views\Article\_ArticleOther.cshtml" />
     <Content Include="Views\Article\_ArticleMenu.cshtml" />
+    <Content Include="Views\Product\_Search.cshtml" />
+    <Content Include="Views\Product\_CallMe.cshtml" />
+    <Content Include="Views\Product\_RegisterEmail.cshtml" />
+    <Content Include="Views\SocialAndStatistics\_FacebookFanPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

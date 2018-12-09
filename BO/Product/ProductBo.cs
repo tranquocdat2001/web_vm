@@ -154,7 +154,16 @@ namespace BO.ProductBo
             return objModel;
         }
 
+        public int CallMe_Insert(CallMeModel model)
+        {
+            return _productDal.CallMe_Insert(model);
+        }
+
         #endregion
 
+        public int ReceiveEmail_Insert(EmailModel model)
+        {
+            return _productDal.ReceiveEmail_Insert(model);
+        }
     }
 }

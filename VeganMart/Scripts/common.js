@@ -1,6 +1,11 @@
 ﻿// các function dùng chung cho web và mobile
 $(function () {
-    
+    //Chỉ cho nhập số
+    $('.numberOnly').numbersOnly();
+    //Thêm dâu , phân cách hàng nghìn
+    $('.pricemask').pricemask();
+
+    InitForm();
 
 });
 
@@ -10,7 +15,7 @@ function CallMe(pId, uId) {
     });
 }
 
-function Loading() {
+function Loading2() {
     $('#loadding').html('<div class="bg-popup"> <img src="/Content/Web/images/loading300.gif" class="loading"/></div>');
     NoScroll();
 }
@@ -35,20 +40,35 @@ function AutoScroll() {
     $('body').removeAttr('style');
 }
 
-function OpenPopupMessage(strMessage) {
-    var htmlPopup = '<div class="bg_popup"></div>';
-    htmlPopup += '<div class="popup_container">';
-    htmlPopup += '    <div class="content">';
-    //htmlPopup += '     <div class="titlebox">Đăng ký thành viên thành công</div>';
-    //htmlPopup += '     <p class="contentbox">Chúng tôi đã gửi link kích hoạt đến địa chỉ email mà quý khách đã dùng để đăng ký tài khoản. Trong một số trường hợp email có thể rơi vào hòm thư rác, quý khách vui lòng kiểm tra kỹ.</p>';
-    htmlPopup += '       <div>' + strMessage + '</div>';
-    htmlPopup += '       <div class="control pd-top-20 no-mg">';
-    htmlPopup += '           <span class="btn btn-login close-popup">OK</span>';
-    htmlPopup += '       </div>';
-    htmlPopup += '    </div>';
-    htmlPopup += '</div>';
-    $('#popup').html(htmlPopup);
+function Loading() {
+    var htmlTemp = '<div id="waitLoad" class="bg_overlay">';
+    htmlTemp += '       <div class="wait_loading">';
+    htmlTemp += '           <div></div>';
+    htmlTemp += '       </div>';
+    htmlTemp += '   </div>';
+    $('body').append(htmlTemp);
     NoScroll();
+}
+function RemoveLoading() {
+    AutoScroll();
+    $('#waitLoad').remove();
+}
+
+function OpentNotice(notice) {
+    RemoveLoading();
+    $('#notice_popup').remove();
+    var htmlPopup = '<div id="notice_popup">';
+    htmlPopup += '      <h3>Thông báo</h3>';
+    htmlPopup += '      <div class="notice-content">';
+    htmlPopup += '        <p>' + notice + '</p>';
+    htmlPopup += '        <div class="uf-item">';
+    htmlPopup += '          <span class="btn btn-primary" onclick="$.fancybox.close();return false;">Đóng</span>';
+    htmlPopup += '        </div>';
+    htmlPopup += '      </div>';
+    htmlPopup += '  </div>';
+    //$('#notice_popup .notice-content p').text(notice);
+    $('body').append(htmlPopup);
+    $.fancybox("#notice_popup");
 }
 
 function ConfirmMessageLogout(message) {
@@ -65,17 +85,25 @@ function Logout() {
     $('#logoutForm').submit();
 }
 
-
-//function CreateMessageError(strMessage) {
-//    var message = $("#lblMessage");
-//    message.html("<div class=\"field-validation-error\">" + strMessage + "</div>");
-//}
-
 function CreateMessageError(objId, strMessage) {
-    objId.html("<div class=\"field-validation-error\">" + strMessage + "</div>");
+    var strHtml = '';
+    strHtl += '<div class="alert alert-danger fade in">';
+    strHtl += '     <button data-dismiss="alert" class="close"></button>';
+    strHtl += '     <i class="fa-fw fa fa-times"></i>';
+    strHtl += '     <strong>Error!</strong>';
+    strHtl += '     <span id="lblMessage">' + strMessage + '</span>';
+    strHtl += '</div>';
+    objId.html(strHtml);
 }
 function CreateMessageSucces(objId, strMessage) {
-    objId.html("<div class=\"field-validation-error\">" + strMessage + "</div>");
+    var strHtml = '';
+    strHtl += '<div class="alert alert-success fade in">';
+    strHtl += '     <button data-dismiss="alert" class="close"></button>';
+    strHtl += '     <i class="fa-fw fa fa-check"></i>';
+    strHtl += '     <strong>Success!</strong>';
+    strHtl += '     <span id="lblMessage">' + strMessage + '</span>';
+    strHtl += '</div>';
+    objId.html(strHtml);
 }
 
 // tạo model form
@@ -100,87 +128,74 @@ function InitForm() {
     $('button[type=reset]').click(function () {
         $('.field-validation-error').empty();
     });
+
     $('button[type=submit]').click(function () {
         var form = $(this).parents('form:first');
         if (form.valid()) {
-            var data = form.serialize();
-            //if (this.beenSubmitted == data)
-            //    return false;
-            //else {   
-            //this.beenSubmitted = data;
-            //}
-            Loading();
-            $.post(form.attr('action'), data)
-                .done(function (response) {
-                    $('.lblMessage').empty();
-                    var objId = form.find(".lblMessage");
-                    if (response.Error == undefined) {
-                        CreateMessageError(objId, "Có lỗi, bạn vui lòng thử lại!");
-                    }
-                    else if (response.Error) {
-                        CreateMessageError(objId, response.Message);
-                    }
-                    else {
-                        switch (response.NextAction) {
-                            case 1:
-                                location.href = location.pathname;
-                                break;
-                            case 2:
-                                location.href = response.Message;
-                                break;
-                            case 3:
-                                form[0].reset();
-                                if (form.attr('id') == 'frmLostPass') {
-                                    $("#ForgotPassPopup").hide();
-                                }
-                                else if (form.attr('id') == 'frmRegisterEvent') {
-                                    //$('#btnEditRegisterEvent').click();
-                                    $('#btnRegisterEvert').hide();
-                                    $('#btnHome').show();
-                                }
-                                else if (form.attr('id') == 'frmRegister') {
-                                    $(".chosen-select:not(.disable_search)").trigger("chosen:updated");
-                                }
-                                else if (form.attr('id') == 'frmReceiveEmail') {
-                                    $('#ReceiveEmailPopup').hide();
-                                }
-                                OpenPopupMessage(response.Message);
-                                break;
-                            case 5:
-                                form[0].reset();
-                                CreateMessageSucces(objId, response.Message);
-                                break;
-                            default:
-                                CreateMessageSucces(objId, response.Message);
-                                break;
+            form.submit(function (e) {
+                var data = form.serialize();
+                //if (this.beenSubmitted === data)
+                //    return false;
+                //else {
+                //    this.beenSubmitted = data;
+                //}
+                Loading();
+                $.post(form.attr('action'), data)
+                    .done(function (response) {
+                        $('.lblMessage').empty();
+                        if (response.Error == undefined) {
+                            CreateMessageError(objId, "Có lỗi, bạn vui lòng thử lại!");
                         }
-                    }
-                    Loaded();
-                    refreshCaptcha();
-                }).fail(function (jqXhr, textStatus, errorThrown) {
-                    var msg = '';
-                    if (jqXhr.status === 0) {
-                        msg = 'Not connect.\n Verify Network.';
-                    } else if (jqXhr.status == 404) {
-                        msg = 'Requested page not found. [404]';
-                    } else if (jqXhr.status == 500) {
-                        msg = 'Internal Server Error [500].';
-                    } else if (textStatus === 'parsererror') {
-                        msg = 'Requested JSON parse failed.';
-                    } else if (textStatus === 'timeout') {
-                        msg = 'Time out error.';
-                    } else if (textStatus === 'abort') {
-                        msg = 'Ajax request aborted.';
-                    } else {
-                        msg = 'Uncaught Error.\n' + jqXhr.responseText;
-                    }
-                    Loaded();
-                    alert(msg);
-                });
-            return false;
+                        else if (response.Error) {
+                            CreateMessageError(objId, response.Message);
+                            //OpentNotice(response.Message);
+                        }
+                        else {
+                            switch (response.NextAction) {
+                                case 1:
+                                    ReloadPage();
+                                    break;
+                                case 2:
+                                    location.href = response.Message;
+                                    break;
+                                case 5:
+                                    form[0].reset();
+                                    //CreateMessageSucces(response.Message);
+                                    OpentNotice(response.Message);
+                                    break;
+                                default:
+                                    //form.find('.btn_reset').click();
+                                    OpentNotice(response.Message);
+                                    break;
+                            }
+                        }
+                        RemoveLoading();
+                    }).fail(function (jqXhr, textStatus, errorThrown) {
+                        //alert(xhr.responseText);
+                        var msg = '';
+                        if (jqXhr.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (jqXhr.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (jqXhr.status == 500) {
+                            msg = 'Internal Server Error [500].';
+                        } else if (textStatus === 'parsererror') {
+                            msg = 'Requested JSON parse failed.';
+                        } else if (textStatus === 'timeout') {
+                            msg = 'Time out error.';
+                        } else if (textStatus === 'abort') {
+                            msg = 'Ajax request aborted.';
+                        } else {
+                            msg = 'Uncaught Error.\n' + jqXhr.responseText;
+                        }
+                        OpentNotice(msg);
+                    });
+                return false;
+
+            });
         }
         else {
-            $('.lblMessage').empty();
+            $('#lblMessage').empty();
             return false;
         }
     });
@@ -270,6 +285,27 @@ String.prototype.format = function () {
     }
     return text;
 };
+
+$.fn.numbersOnly = function () {
+    this.keyup(function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+};
+$.fn.pricemask = function () {
+    $(this).keyup(function () {
+        var val = $(this).val().replace(/\./g, '').replace(/,/g, '');
+        $(this).val(val).formatCurrency({ roundToDecimalPlace: -1, symbol: '' });
+        val = $(this).val().replace(/,/g, ',');
+        $(this).val(val);
+    });
+};
+
+// trim space
+$.fn.trimSpace = function () {
+    $(this).on('blur focus', function () {
+        $(this).val($.trim($(this).val()));
+    });
+}
 
 
 function BindingModel(branddivid, eml) {
@@ -444,5 +480,4 @@ var lightboxInDetail =
                 });
             }
         }
-
     }

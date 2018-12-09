@@ -63,5 +63,10 @@ namespace Utilities
             title = StringUtils.UnicodeToUnsignCharAndDash(title).Trim('-');
             return BuildURL(ConstUrl.ArticleDetailFormatUrl, new object[] { title, articleId });
         }
+
+        public static string BuildLinkSeach(string textSearch)
+        {
+            return string.Format("/san-pham/k={0}", textSearch);
+        }
     }
 }

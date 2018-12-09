@@ -160,6 +160,19 @@ namespace VeganMart
             );
 
             routes.MapRoute(
+              name: "ProductListSearchPaing",
+              url: "{alias}/k={textSearch}/p{pageIndex}",
+              defaults: new { controller = "Product", action = "Index" },
+              constraints: new { pageIndex = @"\d+" }
+            );
+
+            routes.MapRoute(
+              name: "ProductListSearch",
+              url: "{alias}/k={textSearch}",
+              defaults: new { controller = "Product", action = "Index" }
+            );
+
+            routes.MapRoute(
               name: "ProductListPaing",
               url: "{alias}/p{pageIndex}",
               defaults: new { controller = "Product", action = "Index" },

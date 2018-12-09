@@ -982,6 +982,7 @@ fieldset {
         border: 1px solid #ccc;
         font-size: 12px;
         width: 100%;
+        padding-right: 85px;
     }
 
         .search_wrapper .index_input_search:focus, .search-wrapper .index_input_search:hover {

@@ -54,6 +54,14 @@ namespace Utilities
             }
         }
 
+        public enum NextAction
+        {
+
+            ReloadPage = 1,
+            Redirect = 2,
+            OpentNotice = 5
+        }
+
         #region Product
 
         public enum ProductStatus

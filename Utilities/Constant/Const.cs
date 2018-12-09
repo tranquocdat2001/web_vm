@@ -34,6 +34,10 @@ namespace Utilities
         public static string ArrangeProduct = "ArrangeProduct";
         public static string ArrangeArticle = "ArrangeArticle";
 
+        public static string FaceBookPageId = AppSettings.Instance.GetString("FaceBookPageId");
+        public static string FaceBookAppId = AppSettings.Instance.GetString("FaceBookAppId");
+        public static string FaceBookAppSecret = AppSettings.Instance.GetString("FaceBookAppSecret");
+
         #region Crop Image
 
         public static string FacebookAvatar = "620x324";

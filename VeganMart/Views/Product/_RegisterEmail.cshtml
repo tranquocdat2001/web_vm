@@ -1,0 +1,30 @@
+﻿
+@model EmailModel
+
+<div class="footer_block">
+    <h4 class="footer_block_title">
+        Đăng ký nhận bản tin
+    </h4>
+    <div class="block_content">
+        <div class="des_newsletter_form">
+            Đăng ký email để nhận bản tin mỗi ngày:
+        </div>
+        @using (Html.BeginForm("RegisterEmail", "Product", FormMethod.Post, new { id = "newsletter_form", @class = "m-b-20 contact-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @*@Html.ValidationSummary(true)*@
+            <div class="relative">
+                <div class="newsletter_wrap">
+                    @Html.TextBoxFor(m => m.Email, new { id = "contact_email", autocomplete = "off", type = "email" })
+                    <label>Email của bạn </label>
+                    <button class="btn-newsletter" type="submit">
+                        <span><i class="fa fa-paper-plane-o"></i></span>
+                    </button>
+                </div>
+            </div>
+            <div class="m-t-10">
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+        }
+    </div>
+</div>

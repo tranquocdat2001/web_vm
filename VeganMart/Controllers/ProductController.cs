@@ -58,6 +58,25 @@ namespace VeganMart.Controllers
 
         #endregion
 
+        #region Box search
+
+        [HttpGet]
+        public ActionResult Search(string textSearch)
+        {
+            if (string.IsNullOrEmpty(textSearch))
+                textSearch = "Nhập từ khóa tìm kiếm...";
+            return PartialView("_Search", textSearch);
+        }
+
+        [HttpPost]
+        public ActionResult SearchPost(string textSearch)
+        {
+            string url = BuildLink.BuildLinkSeach(textSearch);
+            return Redirect(url);
+        }
+
+        #endregion
+
         #region Trang danh sách
 
         public ActionResult Index(string alias, string textSearch, int pageIndex = 1)
@@ -223,7 +242,47 @@ namespace VeganMart.Controllers
             return PartialView("_ProductOther", model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CallMe(CallMeModel model)
+        {
+            var objMsg = new MessageModel { Message = "Số điện thoại không đúng định dạng." };
+            if (ModelState.IsValid)
+            {
+                model.UserId = 0;
+                int id = _productBo.CallMe_Insert(model);
+                if (id > 0)
+                    objMsg.Message = "Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất!";
+                else
+                    objMsg.Message = "Có lỗi trong quá trình gửi email, Xin vui lòng thử lại sau.";
+            }
+            return Json(objMsg);
+        }
 
         #endregion
+
+        [HttpGet]
+        public ActionResult RegisterEmail()
+        {
+            EmailModel model = new EmailModel();
+            return PartialView("_RegisterEmail", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterEmail(EmailModel model)
+        {
+            var objMsg = new MessageModel { Message = "Email không đúng định dạng.", NextAction = (int)Enums.NextAction.OpentNotice };
+            if (ModelState.IsValid)
+            {
+                model.UserId = 0;
+                int id = _productBo.ReceiveEmail_Insert(model);
+                if (id > 0)
+                    objMsg.Message = "Đăng ký nhận tin thành công!";
+                else
+                    objMsg.Message = "Có lỗi trong quá trình gửi email, Xin vui lòng thử lại sau.";
+            }
+            return Json(objMsg);
+        }
     }
 }

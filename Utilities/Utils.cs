@@ -589,6 +589,10 @@ namespace Utilities
             }
             return string.Empty;
         }
+        public static string GetIP()
+        {
+            return HttpContext.Current.Request.Headers["X-Forwarded-For"];
+        }
 
         public static string GetCssClassByTopicId(int topicId)
         {
@@ -1054,5 +1058,6 @@ namespace Utilities
             MemberExpression expressionBody = (MemberExpression)memberExpression.Body;
             return expressionBody.Member.Name;
         }
+
     }
 }

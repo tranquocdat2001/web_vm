@@ -69,7 +69,7 @@
                                 </div>*@
                             <div class="product-code p-b-10">Mã SP: @Model.Code</div>
                             <div class="des p-b-10">
-                                @Html.Raw(Model.Description)
+                                @Html.Raw(Model.ShortDescription)
                             </div>
                             @*<div class="social">
                                     <!-- AddThis Button BEGIN -->
@@ -106,17 +106,8 @@
                                 @*<div class="button clearfix">
                                         <button class="btn btn-primary" disabled="disabled"><i class="glyphicon glyphicon-shopping-cart"></i> Hết hàng</button>
                                     </div>*@
-                                <div class="call">
-                                    <p class="title">Để lại số điện thoại, chúng tôi sẽ tư vấn ngay sau từ 5 › 10 phút</p>
-                                    <div class="input">
-                                        <div class="input-group">
-                                            <input class="form-control" ng-model="CustomerPhone" onblur="if(this.value=='')this.value='Nhập số điện thoại...'" onfocus="if(this.value=='Nhập số điện thoại...')this.value=''" value="Nhập số điện thoại..." type="text">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-primary" type="button" ng-click="callMe()"><i class="fa fa-phone"></i> Gọi lại cho tôi</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                @Html.Partial("~/Views/Product/_CallMe.cshtml", new CallMeModel() { ProductId = Model.ProductId })
                             </div>
                         </div>
                     </div>
@@ -130,8 +121,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade in active">
                             <div class="container-fluid rte">
-                                <p>- Cồi sò điệp là phần thịt được tách từ vỏ của sò điệp. Cồi sò điệp là phần ngon và quý nhất của sò, thịt trắng, dai, có vị giòn ngọt, tính hiền... Cồi sò điệp chứa nhiều dưỡng chất, vitamin và khoáng chất tốt cho sức khỏe, tăng sức đề kháng.</p>
-                                <p>- Bản chất thịt cồi sò điệp ngọt thanh, mát nên các món ăn tiếp nối ra đời. Với những nguyên liệu không cầu kỳ nhưng làm ra những món ăn vô cùng đắt giá cho sức khỏe thì cồi sò điệp rất được yêu thích.</p>
+                                @Html.Raw(Model.Description)
                             </div>
                         </div>
                     </div>

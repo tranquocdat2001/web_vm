@@ -86,9 +86,9 @@ namespace BO.ParserLink
 
             if (!string.IsNullOrEmpty(searchInfo.TextSearch))
             {
-                metaTag.TitlePage = string.Format("Tìm kiếm {0}", searchInfo.TextSearch);
-                metaTag.MetaTitle = string.Format("Tìm kiếm {0}", searchInfo.TextSearch);
-                metaTag.MetaDescription = string.Format("Tìm kiếm {0}", searchInfo.TextSearch);
+                metaTag.TitlePage = string.Format("Tìm kiếm: \"{0}\"", searchInfo.TextSearch);
+                metaTag.MetaTitle = string.Format("Tìm kiếm: \"{0}\"", searchInfo.TextSearch);
+                metaTag.MetaDescription = string.Format("Tìm kiếm: \"{0}\"", searchInfo.TextSearch);
             }
             else if (searchInfo.CateId > 0)
             {

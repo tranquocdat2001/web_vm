@@ -95,5 +95,50 @@ namespace DAL.ProductDal
 
             return obj;
         }
+
+        public int CallMe_Insert(CallMeModel model)
+        {
+            int id = 0;
+            string storeName = "CallMe_Insert";
+            try
+            {
+                using (IDbContext context = Context())
+                {
+                    id = context.StoredProcedure(storeName)
+                        .Parameter("SDT", model.Phone, DataTypes.String)
+                        .Parameter("ProductId", model.ProductId, DataTypes.Int32)
+                        .Parameter("UserId", model.UserId, DataTypes.Int32)
+                        .QuerySingle<int>();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("{0} => {1}", storeName, ex));
+            }
+
+            return id;
+        }
+
+        public int ReceiveEmail_Insert(EmailModel model)
+        {
+            int id = 0;
+            string storeName = "FE_ReceiveEmail_Insert";
+            try
+            {
+                using (IDbContext context = Context())
+                {
+                    id = context.StoredProcedure(storeName)
+                        .Parameter("UserId", model.UserId, DataTypes.Int32)
+                        .Parameter("Email", model.Email, DataTypes.String)
+                        .QuerySingle<int>();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("{0} => {1}", storeName, ex));
+            }
+
+            return id;
+        }
     }
 }
